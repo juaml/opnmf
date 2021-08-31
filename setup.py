@@ -1,5 +1,4 @@
 # Authors: Federico Raimondo <f.raimondo@fz-juelich.de>
-#          Sami Hamdan <s.hamdan@fz-juelich.de>
 # License: AGPL
 import setuptools
 
@@ -7,14 +6,14 @@ with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 
-DOWNLOAD_URL = '<GITHUB_URL>'
-URL = '<DOC_URL>'
+DOWNLOAD_URL = 'https://github.com/juaml/opnmf'
+URL = 'https://juaml.github.io/opnmf'
 
 setuptools.setup(
-    name='<PKG_NAME>',
-    author='<AUTHOR_NAME>',
-    author_email='<AUTHOR_EMAIL>',
-    description='<SHORT_DESC>',
+    name='opnmf',
+    author='Fede Raimondo',
+    author_email='f.raimondo@fz-juelich.de',
+    description='orthogonal projective non-negative matrix factorization',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url=URL,
@@ -42,7 +41,7 @@ setuptools.setup(
     use_scm_version=dict(
         version_scheme="python-simplified-semver",
         local_scheme="node-and-date",
-        write_to="<PKG_NAME>/_version.py",
+        write_to="opnmf/_version.py",
         write_to_template="__version__ = '{version}'\n"
     ),
     setup_requires=['setuptools_scm'],
