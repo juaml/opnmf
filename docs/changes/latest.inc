@@ -10,13 +10,11 @@
 
 .. _current:
 
-Current (0.0.0.dev)
+Current (0.0.2.dev)
 -------------------
 
 Enhancements
 ~~~~~~~~~~~~
-
-- Created a the repository based on the mockup by by `Fede Raimondo`_.
 
 Bugs
 ~~~~

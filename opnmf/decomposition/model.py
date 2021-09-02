@@ -102,4 +102,3 @@ class OPNMF(TransformerMixin, BaseEstimator):
             Transformed data.
         """
         raise NotImplementedError("Don't know how to do this!")
-    
