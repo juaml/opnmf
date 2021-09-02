@@ -44,5 +44,5 @@ def test_against_R(cwd):
     r_W = mc_R['W']
     r_H = mc_R['H']
 
-    np.testing.assert_array_almost_equal(H, r_H, decimal=5)
-    np.testing.assert_array_almost_equal(W, r_W, decimal=5)
+    np.testing.assert_array_almost_equal(H, r_H, decimal=4)
+    np.testing.assert_array_almost_equal(W, r_W, decimal=4)
