@@ -9,6 +9,8 @@ Welcome to the documentation!
    :caption: Contents:
 
    installation
+   auto_examples/index.rst
+   api
    maintaining
    whats_new
 

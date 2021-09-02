@@ -9,7 +9,15 @@ Requirements
 
 opnmf requires the following packages:
 
+* `Python`_ >= 3.6
+* `scikit-learn`_
+
 Running the examples requires:
+
+* `Python`_ >= 3.6
+* `scikit-learn`_
+* `matplotlib`_
+
 
 Depending on the installation method, this packages might be installed
 automatically.

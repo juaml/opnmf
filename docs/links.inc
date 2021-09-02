@@ -17,6 +17,7 @@
 
 .. _`Python`: https://python.org
 .. _`seaborn`: https://seaborn.pydata.org
+.. _`scikit-learn`: https://scikit-learn.org
 .. _`matplotlib`: https://matplotlib.org
 
 .. _`venv`: https://docs.python.org/3/tutorial/venv.html
