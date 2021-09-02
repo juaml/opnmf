@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Reference &mdash; opnmf  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Maintaining" href="maintaining.html" />
+    <link rel="prev" title="Faces Decomposition" href="auto_examples/plot_faces_decomposition.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> opnmf
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-opnmf.decomposition.model">Main API functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maintaining.html">Maintaining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">What’s new</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">opnmf</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-opnmf.decomposition.model">
+<span id="main-api-functions"></span><h2>Main API functions<a class="headerlink" href="#module-opnmf.decomposition.model" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opnmf.decomposition.model.OPNMF">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opnmf.decomposition.model.</span></span><span class="sig-name descname"><span class="pre">OPNMF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nndsvd'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opnmf.decomposition.model.OPNMF" title="Permalink to this definition">¶</a></dt>
+<dd><p>orthogonal projective non-negative matrix factorization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_components: int</strong></dt><dd><p>Number of components.</p>
+</dd>
+<dt><strong>alpha: int</strong></dt><dd><p>Constant that multiplies the regularization terms.
+Set it to zero to have no regularization. Defaults to 1.0.</p>
+</dd>
+<dt><strong>max_iter: int</strong></dt><dd><p>Maximum number of iterations before timing out. Defaults to 200.</p>
+</dd>
+<dt><strong>tol: float, default=1e-4</strong></dt><dd><p>Tolerance of the stopping condition.</p>
+</dd>
+<dt><strong>init</strong><span class="classifier">{‘random’, ‘nndsvd’, ‘nndsvda’, ‘nndsvdar’, ‘custom’}, default=None</span></dt><dd><p>Method used to initialize the procedure.
+Valid options:</p>
+<ul class="simple">
+<li><p>None: ‘nndsvd’ if n_components &lt; n_features, otherwise ‘random’.</p></li>
+<li><p>‘random’: non-negative random matrices, scaled with:
+sqrt(X.mean() / n_components)</p></li>
+<li><p>‘nndsvd’: Nonnegative Double Singular Value Decomposition (NNDSVD)
+initialization (better for sparseness)</p></li>
+<li><p>‘nndsvda’: NNDSVD with zeros filled with the average of X
+(better when sparsity is not desired)</p></li>
+<li><p>‘nndsvdar’: NNDSVD with zeros filled with small random values
+(generally faster, less accurate alternative to NNDSVDa
+for when sparsity is not desired)</p></li>
+<li><p>‘custom’: use custom matrices W and H if <cite>update_H=True</cite>. If
+<cite>update_H=False</cite>, then only custom matrix H is used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="opnmf.decomposition.model.OPNMF.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opnmf.decomposition.model.OPNMF.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn a OPNMF model for the data X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>Data matrix to be decomposed</p>
+</dd>
+<dt><strong>init_W</strong><span class="classifier">array-like of shape (n_samples, n_components)</span></dt><dd><p>If init=’custom’, it is used as initial guess for the solution.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>self</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opnmf.decomposition.model.OPNMF.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opnmf.decomposition.model.OPNMF.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn a OPNMF model for the data X and returns the transformed
+data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>Data matrix to be decomposed</p>
+</dd>
+<dt><strong>init_W</strong><span class="classifier">array-like of shape (n_samples, n_components)</span></dt><dd><p>If init=’custom’, it is used as initial guess for the solution.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>W</strong><span class="classifier">ndarray of shape (n_samples, n_components)</span></dt><dd><p>Transformed data</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opnmf.decomposition.model.OPNMF.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opnmf.decomposition.model.OPNMF.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the data X according to the fitted OPNMF model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>Data matrix to be transformed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>W</strong><span class="classifier">ndarray of shape (n_samples, n_components)</span></dt><dd><p>Transformed data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-opnmf.decomposition.opnmf"></span><dl class="py function">
+<dt class="sig sig-object py" id="opnmf.decomposition.opnmf.opnmf">
+<span class="sig-prename descclassname"><span class="pre">opnmf.decomposition.opnmf.</span></span><span class="sig-name descname"><span class="pre">opnmf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nndsvd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opnmf.decomposition.opnmf.opnmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Orthogonal projective non-negative matrix factorization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X: array-like of shape (n_samples, n_features)</strong></dt><dd><p>Data matrix to be decomposed</p>
+</dd>
+<dt><strong>n_components: int</strong></dt><dd><p>Number of components.</p>
+</dd>
+<dt><strong>max_iter: int</strong></dt><dd><p>Maximum number of iterations before timing out. Defaults to 200.</p>
+</dd>
+<dt><strong>tol: float, default=1e-4</strong></dt><dd><p>Tolerance of the stopping condition.</p>
+</dd>
+<dt><strong>init</strong><span class="classifier">{‘random’, ‘nndsvd’, ‘nndsvda’, ‘nndsvdar’, ‘custom’}, default=None</span></dt><dd><p>Method used to initialize the procedure.
+Valid options:</p>
+<ul class="simple">
+<li><p>None: ‘nndsvd’ if n_components &lt; n_features, otherwise ‘random’.</p></li>
+<li><p>‘random’: non-negative random matrices, scaled with:
+sqrt(X.mean() / n_components)</p></li>
+<li><p>‘nndsvd’: Nonnegative Double Singular Value Decomposition (NNDSVD)
+initialization (better for sparseness)</p></li>
+<li><p>‘nndsvda’: NNDSVD with zeros filled with the average of X
+(better when sparsity is not desired)</p></li>
+<li><p>‘nndsvdar’: NNDSVD with zeros filled with small random values
+(generally faster, less accurate alternative to NNDSVDa
+for when sparsity is not desired)</p></li>
+<li><p>‘custom’: use custom matrices W and H if <cite>update_H=True</cite>. If
+<cite>update_H=False</cite>, then only custom matrix H is used.</p></li>
+</ul>
+</dd>
+<dt><strong>init_W: array (n_samples, n_components)</strong></dt><dd><p>Fixed initial coefficient matrix.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>W</strong><span class="classifier">ndarray of shape (n_samples, n_components)</span></dt><dd><p>The orthogonal non-negative factorization.</p>
+</dd>
+<dt><strong>H</strong><span class="classifier">ndarray of shape (n_components, n_features)</span></dt><dd><p>Expansion coefficients.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="maintaining.html" class="btn btn-neutral float-right" title="Maintaining" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="auto_examples/plot_faces_decomposition.html" class="btn btn-neutral float-left" title="Faces Decomposition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Authors of opnmf.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v0.0.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="api.html">v0.0.1</a></dd>
+    </dl>
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../main/api.html">main</a></dd>
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
