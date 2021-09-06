@@ -39,6 +39,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -180,65 +181,51 @@ to download the full example code</p>
 <p>Implemented based on scikit-learn’s decomposition example.</p>
 <p>Authors: Federico Raimondo, Vlad Niculae, Alexandre Gramfort</p>
 <p>License: BSD 3 clause</p>
-<ul class="sphx-glr-horizontal">
-<li><img alt="First centered Olivetti faces" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_001.png" />
-</li>
-<li><img alt="Non-negative components - NMF - Train time 0.2s" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_002.png" />
-</li>
-<li><img alt="Orthogonal Projected Non-negative components - OPNMF - Train time 0.1s" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_003.png" />
-</li>
-</ul>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /home/runner/scikit_learn_data
-Dataset consists of 400 faces
-Extracting the top 6 Non-negative components - NMF...
-done in 0.211s
-Extracting the top 6 Orthogonal Projected Non-negative components - OPNMF...
-2021-09-02 13:05:17,867 INFO Initializing using nndsvd
-2021-09-02 13:05:17,928 INFO iter=0 diff=0.9636635184288025, obj=155.6279754638672
-2021-09-02 13:05:17,971 INFO Converged in 80 iterations
-done in 0.111s
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span></a>
-
-<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">RandomState</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">RandomState</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_olivetti_faces.html#sklearn.datasets.fetch_olivetti_faces" title="sklearn.datasets.fetch_olivetti_faces" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_olivetti_faces</span></a>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">decomposition</span>
 
-<span class="kn">from</span> <span class="nn">opnmf</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a>
-
-<span class="c1"># Display progress logs on stdout</span>
-<a href="https://docs.python.org/3/library/logging.html#logging.basicConfig" title="logging.basicConfig" class="sphx-glr-backref-module-logging sphx-glr-backref-type-py-function"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span></a><span class="p">(</span><span class="n">level</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span></a><span class="p">,</span>
-                    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(levelname)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="kn">from</span> <span class="nn">opnmf</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">,</span> <span class="n">logging</span>
+</pre></div>
+</div>
+<p>set up logging</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-06 19:21:33,977 - opnmf - INFO - ===== Lib Versions =====
+2021-09-06 19:21:33,977 - opnmf - INFO - numpy: 1.19.5
+2021-09-06 19:21:33,977 - opnmf - INFO - scipy: 1.7.1
+2021-09-06 19:21:33,977 - opnmf - INFO - sklearn: 0.24.2
+2021-09-06 19:21:33,977 - opnmf - INFO - opnmf: 0.0.2.dev2+g4607c26.d20210906
+2021-09-06 19:21:33,977 - opnmf - INFO - ========================
+</pre></div>
+</div>
+<p>We will plot 6 faces and factorize to 6 components</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a>
 <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">image_shape</span></a> <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-
-<span class="c1"># #############################################################################</span>
-<span class="c1"># Load faces data</span>
-<span class="n">faces</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_olivetti_faces.html#sklearn.datasets.fetch_olivetti_faces" title="sklearn.datasets.fetch_olivetti_faces" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_olivetti_faces</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Load faces data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">faces</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_olivetti_faces.html#sklearn.datasets.fetch_olivetti_faces" title="sklearn.datasets.fetch_olivetti_faces" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_olivetti_faces</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                 <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_features</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span><span class="o">.</span><span class="n">shape</span></a>
 
-<span class="c1"># global centering</span>
-<span class="n">faces_centered</span> <span class="o">=</span> <span class="n">faces</span> <span class="o">-</span> <span class="n">faces</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># local centering</span>
-<span class="n">faces_centered</span> <span class="o">-=</span> <span class="n">faces_centered</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset consists of </span><span class="si">%d</span><span class="s2"> faces&quot;</span> <span class="o">%</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">plot_gallery</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">):</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /home/runner/scikit_learn_data
+Dataset consists of 400 faces
+</pre></div>
+</div>
+<p>Defile plotting function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_gallery</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a><span class="p">,</span> <span class="mf">2.26</span> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
@@ -250,57 +237,200 @@ done in 0.111s
         <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.93</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
-
-
-<span class="c1"># #############################################################################</span>
-<span class="c1"># List of the different estimators, whether to center and transpose the</span>
-<span class="c1"># problem, and whether the transformer uses the clustering API.</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimators</span></a> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s1">&#39;Non-negative components - NMF&#39;</span><span class="p">,</span>
-     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class"><span class="n">decomposition</span><span class="o">.</span><span class="n">NMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;nndsvda&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">),</span>
-     <span class="kc">False</span><span class="p">),</span>
-
-    <span class="p">(</span><span class="s1">&#39;Orthogonal Projected Non-negative components - OPNMF&#39;</span><span class="p">,</span>
-     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;nndsvd&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">),</span>
-     <span class="kc">False</span><span class="p">),</span>
-<span class="p">]</span>
-
-<span class="n">plot_gallery</span><span class="p">(</span><span class="s2">&quot;First centered Olivetti faces&quot;</span><span class="p">,</span> <span class="n">faces_centered</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
-
-<span class="c1"># #############################################################################</span>
-<span class="c1"># Do the estimation and plot it</span>
-
-<span class="k">for</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">name</span></a><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimators</span></a><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting the top </span><span class="si">%d</span><span class="s2"> </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">name</span></a><span class="p">))</span>
-    <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t0</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span></a><span class="p">()</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">faces</span>
-    <span class="k">if</span> <a href="https://docs.python.org/3/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center</span></a><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">faces_centered</span>
-    <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">train_time</span></a> <span class="o">=</span> <span class="p">(</span><a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t0</span></a><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;done in </span><span class="si">%0.3f</span><span class="s2">s&quot;</span> <span class="o">%</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">train_time</span></a><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="s1">&#39;cluster_centers_&#39;</span><span class="p">):</span>
-        <span class="n">components_</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">cluster_centers_</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">components_</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">components_</span>
-
-    <span class="c1"># Plot an image representing the pixelwise variance provided by the</span>
-    <span class="c1"># estimator e.g its noise_variance_ attribute. The Eigenfaces estimator,</span>
-    <span class="c1"># via the PCA decomposition, also provides a scalar noise_variance_</span>
-    <span class="c1"># (the mean of pixelwise variance) that cannot be displayed as an image</span>
-    <span class="c1"># so we skip it.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="s1">&#39;noise_variance_&#39;</span><span class="p">)</span> <span class="ow">and</span>
-            <span class="n">estimator</span><span class="o">.</span><span class="n">noise_variance_</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>  <span class="c1"># Skip the Eigenfaces case</span>
-        <span class="n">plot_gallery</span><span class="p">(</span><span class="s2">&quot;Pixelwise variance&quot;</span><span class="p">,</span>
-                     <span class="n">estimator</span><span class="o">.</span><span class="n">noise_variance_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_col</span></a><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                     <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_row</span></a><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plot_gallery</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> - Train time </span><span class="si">%.1f</span><span class="s1">s&#39;</span> <span class="o">%</span> <span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">name</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">train_time</span></a><span class="p">),</span>
-                 <span class="n">components_</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.925 seconds)</p>
+<p>Let’s see how the first 6 faces look (centered around the mean)
+global centering</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">faces_centered</span> <span class="o">=</span> <span class="n">faces</span> <span class="o">-</span> <span class="n">faces</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># local centering</span>
+<span class="n">faces_centered</span> <span class="o">-=</span> <span class="n">faces_centered</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_gallery</span><span class="p">(</span><span class="s2">&quot;First centered Olivetti faces&quot;</span><span class="p">,</span> <span class="n">faces_centered</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="First centered Olivetti faces" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_faces_decomposition_001.png" />
+<p>Lets set some parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a> <span class="o">=</span> <span class="s1">&#39;nndsvd&#39;</span>
+<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a> <span class="o">=</span> <span class="mf">5e-3</span>
+</pre></div>
+</div>
+<p>NMF and OPNMF are both bi-factor factorization. The shared idea is that given
+a non-negative input matrix <span class="math notranslate nohighlight">\(X \in \mathbb{R}^{m \times n}\)</span>, one tries
+to find two non-negative matrix <span class="math notranslate nohighlight">\(W \in \mathbb{R}^{m \times r}\)</span> and
+<span class="math notranslate nohighlight">\(H \in \mathbb{R}^{r \times m}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[X \approx WH\]</div>
+<p>In scikit-learn’s terminology, <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> will return <span class="math notranslate nohighlight">\(W\)</span> while
+<span class="math notranslate nohighlight">\(H\)</span> will be stored as the <code class="docutils literal notranslate"><span class="pre">components_</span></code> attribute of the estimator.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class"><span class="n">decomposition</span><span class="o">.</span><span class="n">NMF</span></a><span class="p">(</span>
+    <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF.fit_transform" title="sklearn.decomposition.NMF.fit_transform" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-method"><span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a><span class="o">.</span><span class="n">components_</span>
+
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">W</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">H</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(&quot;Maximum number of iterations %d reached. Increase it to&quot;
+(400, 6)
+(6, 4096)
+</pre></div>
+</div>
+<p>Now <cite>H</cite> (the components) is a 6 by 4096 matrix (<cite>n_components</cite> x pixels) and
+<cite>W</cite> (the weights) is a 400 by 6 matrix (<cite>n_samples</cite> x <cite>n_components</cite>)
+We can actually plot the components as images and the weights as a
+cluster map.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gallery</span><span class="p">(</span><span class="s1">&#39;NMF components (H)&#39;</span><span class="p">,</span> <span class="n">H</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;NMF weights (W)&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Components&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subjects&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="NMF components (H)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_002.png" />
+</li>
+<li><img alt="NMF weights (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_003.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(990.5555555555553, 0.5, &#39;Subjects&#39;)
+</pre></div>
+</div>
+<p>Contrary to NMF, Projected Non-Negative Matrix Factorization (PNF), is
+defined such that:</p>
+<div class="math notranslate nohighlight">
+\[X \approx PX\]</div>
+<p>where <span class="math notranslate nohighlight">\(P = WW^{T}\)</span>.</p>
+<p>This expands to:</p>
+<div class="math notranslate nohighlight">
+\[X \approx WW^{T}X\]</div>
+<p>In consecuence <span class="math notranslate nohighlight">\(H=W^{T}X\)</span></p>
+<p>The Orthonormal Projected Non-Negative Matrix Factorization (OPNMF), adds
+another constraint to <span class="math notranslate nohighlight">\(W\)</span>: orthonormality.</p>
+<p>Let’s do the same figures as with NMF</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF.fit_transform" title="sklearn.decomposition.NMF.fit_transform" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-method"><span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a><span class="o">.</span><span class="n">components_</span>
+<span class="n">plot_gallery</span><span class="p">(</span><span class="s1">&#39;OPNMF components (H)&#39;</span><span class="p">,</span> <span class="n">H</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;OPNMF weights (W)&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Components&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subjects&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="OPNMF components (H)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_004.png" />
+</li>
+<li><img alt="OPNMF weights (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_005.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-06 19:21:37,428 - opnmf - INFO - Initializing using nndsvd
+2021-09-06 19:21:37,485 - opnmf - INFO - iter=0 diff=0.9636634588241577, obj=155.62832641601562
+2021-09-06 19:21:37,524 - opnmf - INFO - Converged in 80 iterations
+
+Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
+</pre></div>
+</div>
+<p>From these plots, we can see that OPNMF seems to do some sort of clustering
+over the first dimension of X. As the orthonormality constraint forces
+every subject to have a positive weight with at most one component, it
+defines components in a way that each subject matches only one.</p>
+<p>Interestingly, we can use this methodology to do so on the other dimension
+(pixels in the image)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF.fit_transform" title="sklearn.decomposition.NMF.fit_transform" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-method"><span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># Transpose the faces</span>
+<span class="n">H</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a><span class="o">.</span><span class="n">components_</span>
+
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">W</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">H</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-06 19:21:38,236 - opnmf - INFO - Initializing using nndsvd
+2021-09-06 19:21:38,521 - opnmf - INFO - iter=0 diff=0.9637103080749512, obj=155.67027282714844
+2021-09-06 19:21:41,846 - opnmf - INFO - iter=100 diff=0.00534761231392622, obj=146.46954345703125
+2021-09-06 19:21:42,279 - opnmf - INFO - Converged in 114 iterations
+(4096, 6)
+(6, 400)
+</pre></div>
+</div>
+<p>In this case, <cite>H</cite> (the components) is a 6 by 400 matrix
+(<cite>n_components</cite> x <cite>n_samples</cite>) and <cite>W</cite> (the weights) is a 4096 by 6 matrix
+(pixels x <cite>n_components</cite>). So now we can plot <cite>W</cite> as images and <cite>H</cite> as
+a cluster map.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gallery</span><span class="p">(</span><span class="s1">&#39;OPNMF weights (W, transposed)&#39;</span><span class="p">,</span> <span class="n">W</span><span class="p">[:,</span> <span class="p">:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;OPNMF components (W)&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Components&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subjects&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="OPNMF weights (W, transposed)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_006.png" />
+</li>
+<li><img alt="OPNMF components (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_007.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/matrix.py:654: UserWarning: Clustering large matrix with scipy. Installing `fastcluster` may give better performance.
+  warnings.warn(msg)
+
+Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
+</pre></div>
+</div>
+<p>We can also do the same with NMF, but there will be no effect.
+Assuming <span class="math notranslate nohighlight">\(X^T=\tilde{X}\)</span> and the following NMF:</p>
+<div class="math notranslate nohighlight">
+\[\tilde{X} \approx \tilde{W}\tilde{H}\]</div>
+<p>Then the solution <span class="math notranslate nohighlight">\(X \approx WH\)</span> can be also used:</p>
+<div class="math notranslate nohighlight">
+\[\tilde{X} = X^T \approx (WH)^T\]</div>
+<p>which expands to:</p>
+<div class="math notranslate nohighlight">
+\[\tilde{X} = X^T \approx H^TW^T\]</div>
+<p>So from the first formula: <span class="math notranslate nohighlight">\(\tilde{W}=H^T\)</span> and <span class="math notranslate nohighlight">\(\tilde{H}=W^T\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class"><span class="n">decomposition</span><span class="o">.</span><span class="n">NMF</span></a><span class="p">(</span>
+    <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF.fit_transform" title="sklearn.decomposition.NMF.fit_transform" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-method"><span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># Transpose the faces</span>
+<span class="n">H</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a><span class="o">.</span><span class="n">components_</span>
+
+<span class="n">plot_gallery</span><span class="p">(</span><span class="s1">&#39;NMF weights (W, transposed)&#39;</span><span class="p">,</span> <span class="n">W</span><span class="p">[:,</span> <span class="p">:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;NMF components (W)&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Components&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">ax_heatmap</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subjects&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="NMF weights (W, transposed)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_008.png" />
+</li>
+<li><img alt="NMF components (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_009.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(&quot;Maximum number of iterations %d reached. Increase it to&quot;
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/matrix.py:654: UserWarning: Clustering large matrix with scipy. Installing `fastcluster` may give better performance.
+  warnings.warn(msg)
+
+Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
+</pre></div>
+</div>
+<p>If you want to follow the original explanaition with much more math, see:</p>
+<p>Z. Yang and E. Oja, “Linear and Nonlinear Projective Nonnegative Matrix
+Factorization,” in IEEE Transactions on Neural Networks, vol. 21, no. 5,
+pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.474 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-faces-decomposition-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5a666f9fed969812e52f9d7a1f65966c/plot_faces_decomposition.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_faces_decomposition.py</span></code></a></p>
