@@ -42,8 +42,12 @@ extensions = [
     'sphinx_rtd_theme',
     'sphinx_multiversion',
     'numpydoc',
-    'gh_substitutions'
+    'gh_substitutions',
+    'sphinx.ext.mathjax'
 ]
+
+# extensions.append()
+# mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
