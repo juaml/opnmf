@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Reference" href="../api.html" />
-    <link rel="prev" title="Examples" href="index.html" /> 
+    <link rel="prev" title="Rank Selection" href="plot_rank_selection.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,6 +96,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_rank_selection.html">Rank Selection</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Faces Decomposition</a></li>
 </ul>
 </li>
@@ -191,17 +192,44 @@ to download the full example code</p>
 <span class="kn">from</span> <span class="nn">opnmf</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">,</span> <span class="n">logging</span>
 </pre></div>
 </div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;rocket&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;rocket_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;mako&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;mako_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;icefire&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;icefire_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;vlag&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;vlag_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;flare&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;flare_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;crest&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;crest_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+</pre></div>
+</div>
 <p>set up logging</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-06 19:21:33,977 - opnmf - INFO - ===== Lib Versions =====
-2021-09-06 19:21:33,977 - opnmf - INFO - numpy: 1.19.5
-2021-09-06 19:21:33,977 - opnmf - INFO - scipy: 1.7.1
-2021-09-06 19:21:33,977 - opnmf - INFO - sklearn: 0.24.2
-2021-09-06 19:21:33,977 - opnmf - INFO - opnmf: 0.0.2.dev2+g4607c26.d20210906
-2021-09-06 19:21:33,977 - opnmf - INFO - ========================
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-09 15:18:09,884 - opnmf - INFO - ===== Lib Versions =====
+2021-09-09 15:18:09,884 - opnmf - INFO - numpy: 1.19.5
+2021-09-09 15:18:09,884 - opnmf - INFO - scipy: 1.7.1
+2021-09-09 15:18:09,884 - opnmf - INFO - sklearn: 0.24.2
+2021-09-09 15:18:09,884 - opnmf - INFO - opnmf: 0.0.2.dev4+ga227aa4.d20210909
+2021-09-09 15:18:09,884 - opnmf - INFO - ========================
 </pre></div>
 </div>
 <p>We will plot 6 faces and factorize to 6 components</p>
@@ -329,9 +357,9 @@ another constraint to <span class="math notranslate nohighlight">\(W\)</span>: o
 </li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-06 19:21:37,428 - opnmf - INFO - Initializing using nndsvd
-2021-09-06 19:21:37,485 - opnmf - INFO - iter=0 diff=0.9636634588241577, obj=155.62832641601562
-2021-09-06 19:21:37,524 - opnmf - INFO - Converged in 80 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-09 15:18:13,109 - opnmf - INFO - Initializing using nndsvd
+2021-09-09 15:18:13,180 - opnmf - INFO - iter=0 diff=0.9636635184288025, obj=155.62832641601562
+2021-09-09 15:18:13,233 - opnmf - INFO - Converged in 80 iterations
 
 Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
 </pre></div>
@@ -351,10 +379,10 @@ defines components in a way that each subject matches only one.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-06 19:21:38,236 - opnmf - INFO - Initializing using nndsvd
-2021-09-06 19:21:38,521 - opnmf - INFO - iter=0 diff=0.9637103080749512, obj=155.67027282714844
-2021-09-06 19:21:41,846 - opnmf - INFO - iter=100 diff=0.00534761231392622, obj=146.46954345703125
-2021-09-06 19:21:42,279 - opnmf - INFO - Converged in 114 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-09 15:18:13,962 - opnmf - INFO - Initializing using nndsvd
+2021-09-09 15:18:14,297 - opnmf - INFO - iter=0 diff=0.9637102484703064, obj=155.67027282714844
+2021-09-09 15:18:17,918 - opnmf - INFO - iter=100 diff=0.005347567144781351, obj=146.4695281982422
+2021-09-09 15:18:18,425 - opnmf - INFO - Converged in 114 iterations
 (4096, 6)
 (6, 400)
 </pre></div>
@@ -430,7 +458,7 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.474 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.440 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-faces-decomposition-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5a666f9fed969812e52f9d7a1f65966c/plot_faces_decomposition.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_faces_decomposition.py</span></code></a></p>
@@ -449,7 +477,7 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../api.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_rank_selection.html" class="btn btn-neutral float-left" title="Rank Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

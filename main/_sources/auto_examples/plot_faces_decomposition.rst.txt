@@ -44,6 +44,37 @@ License: BSD 3 clause
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'rocket' which already exists.
+      mpl_cm.register_cmap(_name, _cmap)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'rocket_r' which already exists.
+      mpl_cm.register_cmap(_name + "_r", _cmap_r)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'mako' which already exists.
+      mpl_cm.register_cmap(_name, _cmap)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'mako_r' which already exists.
+      mpl_cm.register_cmap(_name + "_r", _cmap_r)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'icefire' which already exists.
+      mpl_cm.register_cmap(_name, _cmap)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'icefire_r' which already exists.
+      mpl_cm.register_cmap(_name + "_r", _cmap_r)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'vlag' which already exists.
+      mpl_cm.register_cmap(_name, _cmap)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'vlag_r' which already exists.
+      mpl_cm.register_cmap(_name + "_r", _cmap_r)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'flare' which already exists.
+      mpl_cm.register_cmap(_name, _cmap)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'flare_r' which already exists.
+      mpl_cm.register_cmap(_name + "_r", _cmap_r)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'crest' which already exists.
+      mpl_cm.register_cmap(_name, _cmap)
+    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'crest_r' which already exists.
+      mpl_cm.register_cmap(_name + "_r", _cmap_r)
+
 
 
 
@@ -67,12 +98,12 @@ set up logging
 
  .. code-block:: none
 
-    2021-09-06 19:21:33,977 - opnmf - INFO - ===== Lib Versions =====
-    2021-09-06 19:21:33,977 - opnmf - INFO - numpy: 1.19.5
-    2021-09-06 19:21:33,977 - opnmf - INFO - scipy: 1.7.1
-    2021-09-06 19:21:33,977 - opnmf - INFO - sklearn: 0.24.2
-    2021-09-06 19:21:33,977 - opnmf - INFO - opnmf: 0.0.2.dev2+g4607c26.d20210906
-    2021-09-06 19:21:33,977 - opnmf - INFO - ========================
+    2021-09-09 15:18:09,884 - opnmf - INFO - ===== Lib Versions =====
+    2021-09-09 15:18:09,884 - opnmf - INFO - numpy: 1.19.5
+    2021-09-09 15:18:09,884 - opnmf - INFO - scipy: 1.7.1
+    2021-09-09 15:18:09,884 - opnmf - INFO - sklearn: 0.24.2
+    2021-09-09 15:18:09,884 - opnmf - INFO - opnmf: 0.0.2.dev4+ga227aa4.d20210909
+    2021-09-09 15:18:09,884 - opnmf - INFO - ========================
 
 
 
@@ -355,9 +386,9 @@ Let's do the same figures as with NMF
 
  .. code-block:: none
 
-    2021-09-06 19:21:37,428 - opnmf - INFO - Initializing using nndsvd
-    2021-09-06 19:21:37,485 - opnmf - INFO - iter=0 diff=0.9636634588241577, obj=155.62832641601562
-    2021-09-06 19:21:37,524 - opnmf - INFO - Converged in 80 iterations
+    2021-09-09 15:18:13,109 - opnmf - INFO - Initializing using nndsvd
+    2021-09-09 15:18:13,180 - opnmf - INFO - iter=0 diff=0.9636635184288025, obj=155.62832641601562
+    2021-09-09 15:18:13,233 - opnmf - INFO - Converged in 80 iterations
 
     Text(990.5555555555555, 0.5, 'Subjects')
 
@@ -395,10 +426,10 @@ Interestingly, we can use this methodology to do so on the other dimension
 
  .. code-block:: none
 
-    2021-09-06 19:21:38,236 - opnmf - INFO - Initializing using nndsvd
-    2021-09-06 19:21:38,521 - opnmf - INFO - iter=0 diff=0.9637103080749512, obj=155.67027282714844
-    2021-09-06 19:21:41,846 - opnmf - INFO - iter=100 diff=0.00534761231392622, obj=146.46954345703125
-    2021-09-06 19:21:42,279 - opnmf - INFO - Converged in 114 iterations
+    2021-09-09 15:18:13,962 - opnmf - INFO - Initializing using nndsvd
+    2021-09-09 15:18:14,297 - opnmf - INFO - iter=0 diff=0.9637102484703064, obj=155.67027282714844
+    2021-09-09 15:18:17,918 - opnmf - INFO - iter=100 diff=0.005347567144781351, obj=146.4695281982422
+    2021-09-09 15:18:18,425 - opnmf - INFO - Converged in 114 iterations
     (4096, 6)
     (6, 400)
 
@@ -552,7 +583,7 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.474 seconds)
+   **Total running time of the script:** ( 0 minutes  11.440 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_faces_decomposition.py:

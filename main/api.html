@@ -201,8 +201,7 @@ initialization (better for sparseness)</p></li>
 <li><p>‘nndsvdar’: NNDSVD with zeros filled with small random values
 (generally faster, less accurate alternative to NNDSVDa
 for when sparsity is not desired)</p></li>
-<li><p>‘custom’: use custom matrices W and H if <cite>update_H=True</cite>. If
-<cite>update_H=False</cite>, then only custom matrix H is used.</p></li>
+<li><p>‘custom’: use custom matrix W.</p></li>
 </ul>
 </dd>
 </dl>
@@ -302,8 +301,7 @@ initialization (better for sparseness)</p></li>
 <li><p>‘nndsvdar’: NNDSVD with zeros filled with small random values
 (generally faster, less accurate alternative to NNDSVDa
 for when sparsity is not desired)</p></li>
-<li><p>‘custom’: use custom matrices W and H if <cite>update_H=True</cite>. If
-<cite>update_H=False</cite>, then only custom matrix H is used.</p></li>
+<li><p>‘custom’: use custom matrix W.</p></li>
 </ul>
 </dd>
 <dt><strong>init_W: array (n_samples, n_components)</strong></dt><dd><p>Fixed initial coefficient matrix.</p>
@@ -315,6 +313,65 @@ for when sparsity is not desired)</p></li>
 <dt><strong>W</strong><span class="classifier">ndarray of shape (n_samples, n_components)</span></dt><dd><p>The orthogonal non-negative factorization.</p>
 </dd>
 <dt><strong>H</strong><span class="classifier">ndarray of shape (n_components, n_features)</span></dt><dd><p>Expansion coefficients.</p>
+</dd>
+<dt><strong>mse</strong><span class="classifier">float</span></dt><dd><p>Reconstruction error</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-opnmf.selection"></span><dl class="py function">
+<dt class="sig sig-object py" id="opnmf.selection.rank_permute">
+<span class="sig-prename descclassname"><span class="pre">opnmf.selection.</span></span><span class="sig-name descname"><span class="pre">rank_permute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nndsvd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opnmf.selection.rank_permute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Orthogonal projective non-negative matrix factorization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X: array-like of shape (n_samples, n_features)</strong></dt><dd><p>Data matrix to be decomposed</p>
+</dd>
+<dt><strong>min_components: int</strong></dt><dd><p>Lower bound of the number of components to test.</p>
+</dd>
+<dt><strong>max_components: int</strong></dt><dd><p>Upper bound of the number of components to test.</p>
+</dd>
+<dt><strong>step: int</strong></dt><dd><p>Spacing between values in the components range.</p>
+</dd>
+<dt><strong>max_iter: int</strong></dt><dd><p>Maximum number of iterations before timing out. Defaults to 200.</p>
+</dd>
+<dt><strong>tol: float, default=1e-4</strong></dt><dd><p>Tolerance of the stopping condition.</p>
+</dd>
+<dt><strong>init</strong><span class="classifier">{‘random’, ‘nndsvd’, ‘nndsvda’, ‘nndsvdar’, ‘custom’}, default=None</span></dt><dd><p>Method used to initialize the procedure.
+Valid options:</p>
+<ul class="simple">
+<li><p>None: ‘nndsvd’ if n_components &lt; n_features, otherwise ‘random’.</p></li>
+<li><p>‘random’: non-negative random matrices, scaled with:
+sqrt(X.mean() / n_components)</p></li>
+<li><p>‘nndsvd’: Nonnegative Double Singular Value Decomposition (NNDSVD)
+initialization (better for sparseness)</p></li>
+<li><p>‘nndsvda’: NNDSVD with zeros filled with the average of X
+(better when sparsity is not desired)</p></li>
+<li><p>‘nndsvdar’: NNDSVD with zeros filled with small random values
+(generally faster, less accurate alternative to NNDSVDa
+for when sparsity is not desired)</p></li>
+<li><p>‘custom’: use custom matrix W.</p></li>
+</ul>
+</dd>
+<dt><strong>init_W: array (n_samples, n_components)</strong></dt><dd><p>Fixed initial coefficient matrix.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>good_ranks: array</dt><dd><p>Array with the number of components that were selected.</p>
+</dd>
+<dt>tested_ranks: array</dt><dd><p>Array with the number of components that were tested.</p>
+</dd>
+<dt>errors: array</dt><dd><p>Reconstruction error for each number of components tested.</p>
+</dd>
+<dt>random_errors: array</dt><dd><p>Reconstruction error for the random permutation, for each number of
+components tested.</p>
+</dd>
+<dt>estimators: array</dt><dd><p>The fitted estimators for each number of components tested.</p>
 </dd>
 </dl>
 </dd>
