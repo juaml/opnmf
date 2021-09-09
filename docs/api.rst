@@ -12,3 +12,6 @@ Main API functions
 
 .. automodule:: opnmf.decomposition.opnmf
    :members:
+
+.. automodule:: opnmf.selection
+   :members:

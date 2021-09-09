@@ -16,6 +16,8 @@ Current (0.0.2.dev)
 Enhancements
 ~~~~~~~~~~~~
 
+- Add Rank Selection using permutation by `Fede Raimondo`_ and `Kaustubh Patil`_.
+
 Bugs
 ~~~~
 

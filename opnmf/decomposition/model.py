@@ -1,4 +1,5 @@
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.utils.validation import check_is_fitted
 
 from . opnmf import opnmf
 
@@ -31,8 +32,7 @@ class OPNMF(TransformerMixin, BaseEstimator):
         * 'nndsvdar': NNDSVD with zeros filled with small random values
           (generally faster, less accurate alternative to NNDSVDa
           for when sparsity is not desired)
-        * 'custom': use custom matrices W and H if `update_H=True`. If
-          `update_H=False`, then only custom matrix H is used.
+        * 'custom': use custom matrix W.
 
     """
 
@@ -78,13 +78,15 @@ class OPNMF(TransformerMixin, BaseEstimator):
         """
 
         # Run factorization
-        W, H = opnmf(X, n_components=self.n_components, max_iter=self.max_iter,
-                     tol=self.tol, init=self.init, init_W=init_W)
+        W, H, mse = opnmf(X, n_components=self.n_components,
+                          max_iter=self.max_iter, tol=self.tol, init=self.init,
+                          init_W=init_W)
 
         # Set model variables
         self.coef_ = W
         self.n_components_ = H.shape[0]
         self.components_ = H
+        self.mse_ = mse
 
         return self.coef_
 
@@ -102,3 +104,7 @@ class OPNMF(TransformerMixin, BaseEstimator):
             Transformed data.
         """
         raise NotImplementedError("Don't know how to do this!")
+
+    def mse(self):
+        check_is_fitted(self)
+        return self.mse_

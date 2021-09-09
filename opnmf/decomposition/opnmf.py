@@ -35,8 +35,7 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
         * 'nndsvdar': NNDSVD with zeros filled with small random values
           (generally faster, less accurate alternative to NNDSVDa
           for when sparsity is not desired)
-        * 'custom': use custom matrices W and H if `update_H=True`. If
-          `update_H=False`, then only custom matrix H is used.
+        * 'custom': use custom matrix W.
 
     init_W: array (n_samples, n_components)
         Fixed initial coefficient matrix.
@@ -47,6 +46,8 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
         The orthogonal non-negative factorization.
     H : ndarray of shape (n_components, n_features)
         Expansion coefficients.
+    mse : float
+        Reconstruction error
     """
     if init != 'custom':
         if init_W is not None:
@@ -75,7 +76,7 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
             delta_W = (np.linalg.norm(old_W - W, ord='fro') /
                        np.linalg.norm(old_W, ord='fro'))
             if (iter % 100) == 0:
-                obj = np.linalg.norm(X - W @ (W.T @ X), ord='fro')
+                obj = np.linalg.norm(X - (W @ (W.T @ X)), ord='fro')
                 logger.info(f'iter={iter} diff={delta_W}, obj={obj}')
             if delta_W < tol:
                 logger.info(f'Converged in {iter} iterations')
@@ -99,4 +100,6 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
     W = W[:, idx]
     H = W.T @ X
 
-    return W, H
+    mse = np.linalg.norm(X - (W @ H), ord='fro')
+
+    return W, H, mse
