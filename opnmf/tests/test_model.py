@@ -19,7 +19,7 @@ def test_model(cwd):
     m_W = opnmf_model.fit_transform(data)
     m_H = opnmf_model.components_
 
-    W, H = opnmf.opnmf(data, n_components=6)
+    W, H, _ = opnmf.opnmf(data, n_components=6)
 
     np.testing.assert_array_almost_equal(m_W, W, decimal=4)
     np.testing.assert_array_almost_equal(m_H, H, decimal=4)

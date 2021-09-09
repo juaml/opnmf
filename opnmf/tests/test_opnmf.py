@@ -17,8 +17,8 @@ def test_against_matlab(cwd):
     data = mc['data']
     init_W = mc['init_W']
 
-    W, H = opnmf.opnmf(data, n_components=6, max_iter=50000, tol=1e-5,
-                       init_W=init_W, init='custom')
+    W, H, _ = opnmf.opnmf(data, n_components=6, max_iter=50000, tol=1e-5,
+                          init_W=init_W, init='custom')
 
     mc = sio.loadmat(cwd / 'data/opnmf6_matlab.mat')
 
@@ -36,8 +36,8 @@ def test_against_R(cwd):
     data = mc['data']
     init_W = mc['init_W']
 
-    W, H = opnmf.opnmf(data, n_components=6, max_iter=50000, tol=1e-5,
-                       init_W=init_W, init='custom')
+    W, H, _ = opnmf.opnmf(data, n_components=6, max_iter=50000, tol=1e-5,
+                          init_W=init_W, init='custom')
 
     mc_R = sio.loadmat(cwd / 'data/opnmf6_R.mat')
 
