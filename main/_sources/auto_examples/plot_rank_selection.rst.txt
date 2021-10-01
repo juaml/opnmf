@@ -61,12 +61,12 @@ set up logging
 
  .. code-block:: none
 
-    2021-09-09 15:18:08,650 - opnmf - INFO - ===== Lib Versions =====
-    2021-09-09 15:18:08,650 - opnmf - INFO - numpy: 1.19.5
-    2021-09-09 15:18:08,650 - opnmf - INFO - scipy: 1.7.1
-    2021-09-09 15:18:08,650 - opnmf - INFO - sklearn: 0.24.2
-    2021-09-09 15:18:08,650 - opnmf - INFO - opnmf: 0.0.2.dev4+ga227aa4.d20210909
-    2021-09-09 15:18:08,650 - opnmf - INFO - ========================
+    2021-10-01 09:27:40,215 - opnmf - INFO - ===== Lib Versions =====
+    2021-10-01 09:27:40,215 - opnmf - INFO - numpy: 1.19.5
+    2021-10-01 09:27:40,215 - opnmf - INFO - scipy: 1.7.1
+    2021-10-01 09:27:40,215 - opnmf - INFO - sklearn: 0.24.2
+    2021-10-01 09:27:40,215 - opnmf - INFO - opnmf: 0.0.2.dev10+g33a74b9.d20211001
+    2021-10-01 09:27:40,215 - opnmf - INFO - ========================
 
 
 
@@ -117,79 +117,78 @@ of features (4)
 
  .. code-block:: none
 
-    2021-09-09 15:18:09,258 - opnmf - INFO - Choosing ranks between: [1 2 3 4]
-    2021-09-09 15:18:09,258 - opnmf - INFO - Fitting estimators with random permutations
-    2021-09-09 15:18:09,258 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,260 - opnmf - INFO - iter=0 diff=0.8928218684941537, obj=44.28238099116755
-    2021-09-09 15:18:09,260 - opnmf - INFO - Converged in 1 iterations
-    2021-09-09 15:18:09,260 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,261 - opnmf - INFO - iter=0 diff=0.896805524692088, obj=42.98073988623465
-    2021-09-09 15:18:09,267 - opnmf - INFO - iter=100 diff=0.00045515003859145407, obj=35.043510417218215
-    2021-09-09 15:18:09,277 - opnmf - INFO - iter=200 diff=8.442997051649832e-05, obj=35.00380956580567
-    2021-09-09 15:18:09,289 - opnmf - INFO - iter=300 diff=3.216795144244139e-05, obj=34.998271228990426
-    2021-09-09 15:18:09,301 - opnmf - INFO - iter=400 diff=1.607103412869495e-05, obj=34.996579318482034
-    2021-09-09 15:18:09,312 - opnmf - INFO - Converged in 485 iterations
-    2021-09-09 15:18:09,312 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,315 - opnmf - INFO - iter=0 diff=0.8979470798531737, obj=41.293852428604595
-    2021-09-09 15:18:09,327 - opnmf - INFO - iter=100 diff=0.0005732880369827952, obj=24.294412882648114
-    2021-09-09 15:18:09,340 - opnmf - INFO - iter=200 diff=9.289535301779533e-05, obj=24.178941783222268
-    2021-09-09 15:18:09,352 - opnmf - INFO - iter=300 diff=3.2271684414140606e-05, obj=24.163646787683795
-    2021-09-09 15:18:09,364 - opnmf - INFO - iter=400 diff=1.4716306874287657e-05, obj=24.158992376667086
-    2021-09-09 15:18:09,368 - opnmf - INFO - Converged in 458 iterations
-    2021-09-09 15:18:09,368 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,373 - opnmf - INFO - iter=0 diff=0.9001974001824891, obj=40.195942593085064
-    2021-09-09 15:18:09,379 - opnmf - INFO - iter=100 diff=0.000265288494807447, obj=1.8912086897106712
-    2021-09-09 15:18:09,385 - opnmf - INFO - iter=200 diff=5.459202896847843e-05, obj=0.8589973454666748
-    2021-09-09 15:18:09,392 - opnmf - INFO - iter=300 diff=2.2616573148208105e-05, obj=0.5526854290119201
-    2021-09-09 15:18:09,398 - opnmf - INFO - iter=400 diff=1.225896481507395e-05, obj=0.4067295073274278
-    2021-09-09 15:18:09,400 - opnmf - INFO - Converged in 441 iterations
-    2021-09-09 15:18:09,401 - opnmf - INFO - Fitting estimators with original data
-    2021-09-09 15:18:09,401 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,402 - opnmf - INFO - iter=0 diff=0.8979166119932411, obj=18.19299122423655
-    2021-09-09 15:18:09,402 - opnmf - INFO - Converged in 1 iterations
-    2021-09-09 15:18:09,402 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,403 - opnmf - INFO - iter=0 diff=0.9005345540236736, obj=17.592898608366433
-    2021-09-09 15:18:09,409 - opnmf - INFO - iter=100 diff=0.0047823340466162725, obj=12.3743612318548
-    2021-09-09 15:18:09,414 - opnmf - INFO - iter=200 diff=0.0017090250985302992, obj=9.23611253683672
-    2021-09-09 15:18:09,420 - opnmf - INFO - iter=300 diff=0.0004670349054987102, obj=8.274114227196149
-    2021-09-09 15:18:09,426 - opnmf - INFO - iter=400 diff=0.00015084168501738635, obj=8.021475182985375
-    2021-09-09 15:18:09,432 - opnmf - INFO - iter=500 diff=5.3279572748436734e-05, obj=7.941750994725744
-    2021-09-09 15:18:09,437 - opnmf - INFO - iter=600 diff=1.9508155278104865e-05, obj=7.913889310596233
-    2021-09-09 15:18:09,441 - opnmf - INFO - Converged in 668 iterations
-    2021-09-09 15:18:09,441 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,442 - opnmf - INFO - iter=0 diff=0.9008854436852692, obj=17.589994890219803
-    2021-09-09 15:18:09,448 - opnmf - INFO - iter=100 diff=0.0064903519204171, obj=12.281892360977256
-    2021-09-09 15:18:09,455 - opnmf - INFO - iter=200 diff=0.0029083573435829246, obj=7.428428494714531
-    2021-09-09 15:18:09,461 - opnmf - INFO - iter=300 diff=0.000836939665601011, obj=4.692345362790712
-    2021-09-09 15:18:09,467 - opnmf - INFO - iter=400 diff=0.00033340595841182137, obj=3.746048776589674
-    2021-09-09 15:18:09,473 - opnmf - INFO - iter=500 diff=0.00016958404516661353, obj=3.386655667852882
-    2021-09-09 15:18:09,479 - opnmf - INFO - iter=600 diff=0.00010053594640459626, obj=3.224643627824669
-    2021-09-09 15:18:09,485 - opnmf - INFO - iter=700 diff=6.587474563001483e-05, obj=3.1406655000068846
-    2021-09-09 15:18:09,491 - opnmf - INFO - iter=800 diff=4.626057471867318e-05, obj=3.0923386173788283
-    2021-09-09 15:18:09,497 - opnmf - INFO - iter=900 diff=3.4166467358701826e-05, obj=3.0622562564636824
-    2021-09-09 15:18:09,503 - opnmf - INFO - iter=1000 diff=2.6215926734378055e-05, obj=3.0423680638944557
-    2021-09-09 15:18:09,509 - opnmf - INFO - iter=1100 diff=2.0724385737880826e-05, obj=3.0285824848281915
-    2021-09-09 15:18:09,515 - opnmf - INFO - iter=1200 diff=1.6779513269413286e-05, obj=3.018657119707244
-    2021-09-09 15:18:09,521 - opnmf - INFO - iter=1300 diff=1.3853983874381668e-05, obj=3.011285535705443
-    2021-09-09 15:18:09,527 - opnmf - INFO - iter=1400 diff=1.1626484504813613e-05, obj=3.0056673153828553
-    2021-09-09 15:18:09,533 - opnmf - INFO - Converged in 1494 iterations
-    2021-09-09 15:18:09,533 - opnmf - INFO - Initializing using nndsvd
-    2021-09-09 15:18:09,534 - opnmf - INFO - iter=0 diff=0.900972659460705, obj=17.579567022097375
-    2021-09-09 15:18:09,540 - opnmf - INFO - iter=100 diff=0.0047366227241186975, obj=11.563025165436631
-    2021-09-09 15:18:09,546 - opnmf - INFO - iter=200 diff=0.0026013503303405974, obj=7.444752313840773
-    2021-09-09 15:18:09,553 - opnmf - INFO - iter=300 diff=0.0008629189126872505, obj=4.1398264522346055
-    2021-09-09 15:18:09,559 - opnmf - INFO - iter=400 diff=0.0003468401566329803, obj=2.5709506761378
-    2021-09-09 15:18:09,565 - opnmf - INFO - iter=500 diff=0.00017414127196758327, obj=1.8021428845057579
-    2021-09-09 15:18:09,571 - opnmf - INFO - iter=600 diff=0.0001019585812448308, obj=1.3696389513039622
-    2021-09-09 15:18:09,578 - opnmf - INFO - iter=700 diff=6.617752710394094e-05, obj=1.09808988954035
-    2021-09-09 15:18:09,584 - opnmf - INFO - iter=800 diff=4.615562611258542e-05, obj=0.9135682660008562
-    2021-09-09 15:18:09,590 - opnmf - INFO - iter=900 diff=3.3922841629807206e-05, obj=0.7807271391302739
-    2021-09-09 15:18:09,596 - opnmf - INFO - iter=1000 diff=2.5940087262184904e-05, obj=0.6808413393286716
-    2021-09-09 15:18:09,602 - opnmf - INFO - iter=1100 diff=2.0458660498991173e-05, obj=0.6031603926541192
-    2021-09-09 15:18:09,608 - opnmf - INFO - iter=1200 diff=1.6539575385023253e-05, obj=0.5411070811307666
-    2021-09-09 15:18:09,615 - opnmf - INFO - iter=1300 diff=1.364412570831366e-05, obj=0.49044638273711
-    2021-09-09 15:18:09,621 - opnmf - INFO - iter=1400 diff=1.1446172057178955e-05, obj=0.4483349544164648
-    2021-09-09 15:18:09,626 - opnmf - INFO - Converged in 1484 iterations
+    2021-10-01 09:27:40,420 - opnmf - INFO - Choosing ranks between: [1 2 3 4]
+    2021-10-01 09:27:40,421 - opnmf - INFO - Fitting estimators with random permutations
+    2021-10-01 09:27:40,421 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,422 - opnmf - INFO - iter=0 diff=0.8928349823195274, obj=44.24046922626564
+    2021-10-01 09:27:40,423 - opnmf - INFO - Converged in 1 iterations
+    2021-10-01 09:27:40,423 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,425 - opnmf - INFO - iter=0 diff=0.8945876476253579, obj=42.14309353676058
+    2021-10-01 09:27:40,434 - opnmf - INFO - iter=100 diff=0.00016374938868314682, obj=34.77859548852658
+    2021-10-01 09:27:40,455 - opnmf - INFO - iter=200 diff=3.747300230835666e-05, obj=34.768322029293365
+    2021-10-01 09:27:40,472 - opnmf - INFO - iter=300 diff=1.608904104298194e-05, obj=34.766573508932595
+    2021-10-01 09:27:40,484 - opnmf - INFO - Converged in 378 iterations
+    2021-10-01 09:27:40,484 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,489 - opnmf - INFO - iter=0 diff=0.8952921696047019, obj=40.29888298911503
+    2021-10-01 09:27:40,505 - opnmf - INFO - iter=100 diff=0.0002099408173448677, obj=24.226675778501313
+    2021-10-01 09:27:40,518 - opnmf - INFO - iter=200 diff=4.736106621402253e-05, obj=24.194183575376794
+    2021-10-01 09:27:40,538 - opnmf - INFO - iter=300 diff=2.020932554312292e-05, obj=24.188722947512378
+    2021-10-01 09:27:40,555 - opnmf - INFO - iter=400 diff=1.1117423697421107e-05, obj=24.18689055674363
+    2021-10-01 09:27:40,557 - opnmf - INFO - Converged in 422 iterations
+    2021-10-01 09:27:40,557 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,559 - opnmf - INFO - iter=0 diff=0.8976632493628571, obj=39.30676010896036
+    2021-10-01 09:27:40,568 - opnmf - INFO - iter=100 diff=0.0002482268430106854, obj=1.8817520826752314
+    2021-10-01 09:27:40,576 - opnmf - INFO - iter=200 diff=5.343145572086106e-05, obj=0.8742620388285275
+    2021-10-01 09:27:40,584 - opnmf - INFO - iter=300 diff=2.2380803702748643e-05, obj=0.5657626951044855
+    2021-10-01 09:27:40,592 - opnmf - INFO - iter=400 diff=1.2186189050155594e-05, obj=0.4173427817826959
+    2021-10-01 09:27:40,596 - opnmf - INFO - Converged in 440 iterations
+    2021-10-01 09:27:40,596 - opnmf - INFO - Fitting estimators with original data
+    2021-10-01 09:27:40,596 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,597 - opnmf - INFO - iter=0 diff=0.8979166119932411, obj=18.19299122423655
+    2021-10-01 09:27:40,597 - opnmf - INFO - Converged in 1 iterations
+    2021-10-01 09:27:40,597 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,598 - opnmf - INFO - iter=0 diff=0.9005345540236733, obj=17.592898608366433
+    2021-10-01 09:27:40,606 - opnmf - INFO - iter=100 diff=0.0047823340466162725, obj=12.3743612318548
+    2021-10-01 09:27:40,613 - opnmf - INFO - iter=200 diff=0.0017090250985302992, obj=9.23611253683672
+    2021-10-01 09:27:40,621 - opnmf - INFO - iter=300 diff=0.0004670349054987102, obj=8.274114227196149
+    2021-10-01 09:27:40,629 - opnmf - INFO - iter=400 diff=0.00015084168501738635, obj=8.021475182985375
+    2021-10-01 09:27:40,637 - opnmf - INFO - iter=500 diff=5.3279572748436734e-05, obj=7.941750994725744
+    2021-10-01 09:27:40,645 - opnmf - INFO - iter=600 diff=1.9508155278104865e-05, obj=7.913889310596233
+    2021-10-01 09:27:40,650 - opnmf - INFO - Converged in 668 iterations
+    2021-10-01 09:27:40,650 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,651 - opnmf - INFO - iter=0 diff=0.900885443685269, obj=17.589994890219803
+    2021-10-01 09:27:40,660 - opnmf - INFO - iter=100 diff=0.00649035192041719, obj=12.281892360977254
+    2021-10-01 09:27:40,668 - opnmf - INFO - iter=200 diff=0.0029083573435827507, obj=7.428428494714526
+    2021-10-01 09:27:40,677 - opnmf - INFO - iter=300 diff=0.0008369396656011752, obj=4.692345362790702
+    2021-10-01 09:27:40,685 - opnmf - INFO - iter=400 diff=0.00033340595841204867, obj=3.746048776589665
+    2021-10-01 09:27:40,694 - opnmf - INFO - iter=500 diff=0.0001695840451667304, obj=3.3866556678528807
+    2021-10-01 09:27:40,702 - opnmf - INFO - iter=600 diff=0.00010053594640473197, obj=3.2246436278246686
+    2021-10-01 09:27:40,711 - opnmf - INFO - iter=700 diff=6.587474563009216e-05, obj=3.140665500006886
+    2021-10-01 09:27:40,720 - opnmf - INFO - iter=800 diff=4.626057471887326e-05, obj=3.0923386173788288
+    2021-10-01 09:27:40,729 - opnmf - INFO - iter=900 diff=3.416646735902286e-05, obj=3.062256256463681
+    2021-10-01 09:27:40,737 - opnmf - INFO - iter=1000 diff=2.621592673473374e-05, obj=3.0423680638944552
+    2021-10-01 09:27:40,746 - opnmf - INFO - iter=1100 diff=2.0724385737876106e-05, obj=3.0285824848281906
+    2021-10-01 09:27:40,754 - opnmf - INFO - iter=1200 diff=1.6779513269199952e-05, obj=3.018657119707243
+    2021-10-01 09:27:40,763 - opnmf - INFO - iter=1300 diff=1.3853983873999957e-05, obj=3.011285535705444
+    2021-10-01 09:27:40,770 - opnmf - INFO - iter=1400 diff=1.162648450522088e-05, obj=3.0056673153828535
+    2021-10-01 09:27:40,777 - opnmf - INFO - Converged in 1494 iterations
+    2021-10-01 09:27:40,777 - opnmf - INFO - Initializing using nndsvd
+    2021-10-01 09:27:40,778 - opnmf - INFO - iter=0 diff=0.900972659460705, obj=17.579567022097375
+    2021-10-01 09:27:40,785 - opnmf - INFO - iter=100 diff=0.00473662272411863, obj=11.563025165436633
+    2021-10-01 09:27:40,793 - opnmf - INFO - iter=200 diff=0.002601350330340456, obj=7.4447523138407705
+    2021-10-01 09:27:40,800 - opnmf - INFO - iter=300 diff=0.000862918912687269, obj=4.139826452234615
+    2021-10-01 09:27:40,807 - opnmf - INFO - iter=400 diff=0.0003468401566331041, obj=2.5709506761378
+    2021-10-01 09:27:40,814 - opnmf - INFO - iter=500 diff=0.0001741412719675588, obj=1.8021428845057663
+    2021-10-01 09:27:40,822 - opnmf - INFO - iter=600 diff=0.00010195858124514596, obj=1.3696389513039622
+    2021-10-01 09:27:40,829 - opnmf - INFO - iter=700 diff=6.617752710397818e-05, obj=1.098089889540359
+    2021-10-01 09:27:40,836 - opnmf - INFO - iter=800 diff=4.615562611220986e-05, obj=0.9135682660008708
+    2021-10-01 09:27:40,844 - opnmf - INFO - iter=900 diff=3.392284162976256e-05, obj=0.7807271391302857
+    2021-10-01 09:27:40,851 - opnmf - INFO - iter=1000 diff=2.594008726222661e-05, obj=0.680841339328675
+    2021-10-01 09:27:40,858 - opnmf - INFO - iter=1100 diff=2.04586604989483e-05, obj=0.6031603926541226
+    2021-10-01 09:27:40,866 - opnmf - INFO - iter=1200 diff=1.6539575384831014e-05, obj=0.5411070811307661
+    2021-10-01 09:27:40,874 - opnmf - INFO - iter=1300 diff=1.3644125708921283e-05, obj=0.4904463827370996
+    2021-10-01 09:27:40,881 - opnmf - INFO - iter=1400 diff=1.1446172057272015e-05, obj=0.44833495441646254
+    2021-10-01 09:27:40,887 - opnmf - INFO - Converged in 1484 iterations
 
 
 
@@ -221,9 +220,10 @@ Plot the results
 
 
 
-.. image:: /auto_examples/images/sphx_glr_plot_rank_selection_001.png
-    :alt: Rank selection on IRIS dataset
-    :class: sphx-glr-single-img
+.. image-sg:: /auto_examples/images/sphx_glr_plot_rank_selection_001.png
+   :alt: Rank selection on IRIS dataset
+   :srcset: /auto_examples/images/sphx_glr_plot_rank_selection_001.png
+   :class: sphx-glr-single-img
 
 
 
@@ -232,7 +232,7 @@ Plot the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.324 seconds)
+   **Total running time of the script:** ( 0 minutes  1.046 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_rank_selection.py:

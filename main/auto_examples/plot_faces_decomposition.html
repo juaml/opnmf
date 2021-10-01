@@ -1,78 +1,40 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Faces Decomposition &mdash; opnmf  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Reference" href="../api.html" />
     <link rel="prev" title="Rank Selection" href="plot_rank_selection.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> opnmf
-          
-
-          
+            <a href="../index.html">
+            <img src="../_static/opnmf.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -80,18 +42,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing</a></li>
@@ -105,80 +56,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What’s new</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">opnmf</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">Examples</a> &raquo;</li>
-        
       <li>Faces Decomposition</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/auto_examples/plot_faces_decomposition.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-faces-decomposition-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="faces-decomposition">
-<span id="sphx-glr-auto-examples-plot-faces-decomposition-py"></span><h1>Faces Decomposition<a class="headerlink" href="#faces-decomposition" title="Permalink to this headline">¶</a></h1>
+<section class="sphx-glr-example-title" id="faces-decomposition">
+<span id="sphx-glr-auto-examples-plot-faces-decomposition-py"></span><h1>Faces Decomposition<a class="headerlink" href="#faces-decomposition" title="Permalink to this headline"></a></h1>
 <p>Implemented based on scikit-learn’s decomposition example.</p>
 <p>Authors: Federico Raimondo, Vlad Niculae, Alexandre Gramfort</p>
 <p>License: BSD 3 clause</p>
@@ -189,33 +98,33 @@ to download the full example code</p>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_olivetti_faces.html#sklearn.datasets.fetch_olivetti_faces" title="sklearn.datasets.fetch_olivetti_faces" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_olivetti_faces</span></a>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">decomposition</span>
 
-<span class="kn">from</span> <span class="nn">opnmf</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">,</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">opnmf</span> <span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">logging</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;rocket&#39; which already exists.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;rocket&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;rocket_r&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;rocket_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;mako&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;mako&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;mako_r&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;mako_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;icefire&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;icefire&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;icefire_r&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;icefire_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;vlag&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;vlag&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;vlag_r&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;vlag_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;flare&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;flare&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;flare_r&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;flare_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;crest&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;crest&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;crest_r&#39; which already exists.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;crest_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
 </pre></div>
 </div>
@@ -224,12 +133,12 @@ to download the full example code</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-09 15:18:09,884 - opnmf - INFO - ===== Lib Versions =====
-2021-09-09 15:18:09,884 - opnmf - INFO - numpy: 1.19.5
-2021-09-09 15:18:09,884 - opnmf - INFO - scipy: 1.7.1
-2021-09-09 15:18:09,884 - opnmf - INFO - sklearn: 0.24.2
-2021-09-09 15:18:09,884 - opnmf - INFO - opnmf: 0.0.2.dev4+ga227aa4.d20210909
-2021-09-09 15:18:09,884 - opnmf - INFO - ========================
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-10-01 09:27:41,190 - opnmf - INFO - ===== Lib Versions =====
+2021-10-01 09:27:41,190 - opnmf - INFO - numpy: 1.19.5
+2021-10-01 09:27:41,190 - opnmf - INFO - scipy: 1.7.1
+2021-10-01 09:27:41,190 - opnmf - INFO - sklearn: 0.24.2
+2021-10-01 09:27:41,190 - opnmf - INFO - opnmf: 0.0.2.dev10+g33a74b9.d20211001
+2021-10-01 09:27:41,190 - opnmf - INFO - ========================
 </pre></div>
 </div>
 <p>We will plot 6 faces and factorize to 6 components</p>
@@ -275,8 +184,7 @@ global centering</p>
 <span class="n">plot_gallery</span><span class="p">(</span><span class="s2">&quot;First centered Olivetti faces&quot;</span><span class="p">,</span> <span class="n">faces_centered</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
 </pre></div>
 </div>
-<img alt="First centered Olivetti faces" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_faces_decomposition_001.png" />
-<p>Lets set some parameters</p>
+<img src="../_images/sphx_glr_plot_faces_decomposition_001.png" srcset="../_images/sphx_glr_plot_faces_decomposition_001.png" alt="First centered Olivetti faces" class = "sphx-glr-single-img"/><p>Lets set some parameters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a> <span class="o">=</span> <span class="s1">&#39;nndsvd&#39;</span>
 <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a> <span class="o">=</span> <span class="mf">5e-3</span>
 </pre></div>
@@ -299,7 +207,7 @@ to find two non-negative matrix <span class="math notranslate nohighlight">\(W \
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
   warnings.warn(&quot;Maximum number of iterations %d reached. Increase it to&quot;
 (400, 6)
 (6, 4096)
@@ -318,10 +226,8 @@ cluster map.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img alt="NMF components (H)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_002.png" />
-</li>
-<li><img alt="NMF weights (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_003.png" />
-</li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_002.png" srcset="../_images/sphx_glr_plot_faces_decomposition_002.png" alt="NMF components (H)" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_003.png" srcset="../_images/sphx_glr_plot_faces_decomposition_003.png" alt="NMF weights (W)" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(990.5555555555553, 0.5, &#39;Subjects&#39;)
@@ -339,7 +245,7 @@ defined such that:</p>
 <p>The Orthonormal Projected Non-Negative Matrix Factorization (OPNMF), adds
 another constraint to <span class="math notranslate nohighlight">\(W\)</span>: orthonormality.</p>
 <p>Let’s do the same figures as with NMF</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">model</span><span class="o">.</span><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
 <span class="n">W</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF.fit_transform" title="sklearn.decomposition.NMF.fit_transform" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-method"><span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
 <span class="n">H</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a><span class="o">.</span><span class="n">components_</span>
 <span class="n">plot_gallery</span><span class="p">(</span><span class="s1">&#39;OPNMF components (H)&#39;</span><span class="p">,</span> <span class="n">H</span><span class="p">[:</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">])</span>
@@ -351,15 +257,13 @@ another constraint to <span class="math notranslate nohighlight">\(W\)</span>: o
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img alt="OPNMF components (H)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_004.png" />
-</li>
-<li><img alt="OPNMF weights (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_005.png" />
-</li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_004.png" srcset="../_images/sphx_glr_plot_faces_decomposition_004.png" alt="OPNMF components (H)" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_005.png" srcset="../_images/sphx_glr_plot_faces_decomposition_005.png" alt="OPNMF weights (W)" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-09 15:18:13,109 - opnmf - INFO - Initializing using nndsvd
-2021-09-09 15:18:13,180 - opnmf - INFO - iter=0 diff=0.9636635184288025, obj=155.62832641601562
-2021-09-09 15:18:13,233 - opnmf - INFO - Converged in 80 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-10-01 09:27:44,535 - opnmf - INFO - Initializing using nndsvd
+2021-10-01 09:27:44,597 - opnmf - INFO - iter=0 diff=0.9636635184288025, obj=155.62832641601562
+2021-10-01 09:27:44,636 - opnmf - INFO - Converged in 80 iterations
 
 Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
 </pre></div>
@@ -370,7 +274,7 @@ every subject to have a positive weight with at most one component, it
 defines components in a way that each subject matches only one.</p>
 <p>Interestingly, we can use this methodology to do so on the other dimension
 (pixels in the image)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">model</span><span class="o">.</span><span class="n">OPNMF</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">init</span></a><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tolerance</span></a><span class="p">)</span>
 <span class="n">W</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF.fit_transform" title="sklearn.decomposition.NMF.fit_transform" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-method"><span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># Transpose the faces</span>
 <span class="n">H</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimator</span></a><span class="o">.</span><span class="n">components_</span>
 
@@ -379,10 +283,10 @@ defines components in a way that each subject matches only one.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-09-09 15:18:13,962 - opnmf - INFO - Initializing using nndsvd
-2021-09-09 15:18:14,297 - opnmf - INFO - iter=0 diff=0.9637102484703064, obj=155.67027282714844
-2021-09-09 15:18:17,918 - opnmf - INFO - iter=100 diff=0.005347567144781351, obj=146.4695281982422
-2021-09-09 15:18:18,425 - opnmf - INFO - Converged in 114 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-10-01 09:27:45,467 - opnmf - INFO - Initializing using nndsvd
+2021-10-01 09:27:45,744 - opnmf - INFO - iter=0 diff=0.9637102484703064, obj=155.67025756835938
+2021-10-01 09:27:49,118 - opnmf - INFO - iter=100 diff=0.0053475690074265, obj=146.46954345703125
+2021-10-01 09:27:49,572 - opnmf - INFO - Converged in 114 iterations
 (4096, 6)
 (6, 400)
 </pre></div>
@@ -400,13 +304,11 @@ a cluster map.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img alt="OPNMF weights (W, transposed)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_006.png" />
-</li>
-<li><img alt="OPNMF components (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_007.png" />
-</li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_006.png" srcset="../_images/sphx_glr_plot_faces_decomposition_006.png" alt="OPNMF weights (W, transposed)" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_007.png" srcset="../_images/sphx_glr_plot_faces_decomposition_007.png" alt="OPNMF components (W)" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/matrix.py:654: UserWarning: Clustering large matrix with scipy. Installing `fastcluster` may give better performance.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/matrix.py:654: UserWarning: Clustering large matrix with scipy. Installing `fastcluster` may give better performance.
   warnings.warn(msg)
 
 Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
@@ -437,15 +339,13 @@ Assuming <span class="math notranslate nohighlight">\(X^T=\tilde{X}\)</span> and
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img alt="NMF weights (W, transposed)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_008.png" />
-</li>
-<li><img alt="NMF components (W)" class="sphx-glr-multi-img" src="../_images/sphx_glr_plot_faces_decomposition_009.png" />
-</li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_008.png" srcset="../_images/sphx_glr_plot_faces_decomposition_008.png" alt="NMF weights (W, transposed)" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_faces_decomposition_009.png" srcset="../_images/sphx_glr_plot_faces_decomposition_009.png" alt="NMF components (W)" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
   warnings.warn(&quot;Maximum number of iterations %d reached. Increase it to&quot;
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/seaborn/matrix.py:654: UserWarning: Clustering large matrix with scipy. Installing `fastcluster` may give better performance.
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seaborn/matrix.py:654: UserWarning: Clustering large matrix with scipy. Installing `fastcluster` may give better performance.
   warnings.warn(msg)
 
 Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
@@ -458,7 +358,7 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.440 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.662 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-faces-decomposition-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5a666f9fed969812e52f9d7a1f65966c/plot_faces_decomposition.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_faces_decomposition.py</span></code></a></p>
@@ -468,41 +368,31 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../api.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="plot_rank_selection.html" class="btn btn-neutral float-left" title="Rank Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Authors of opnmf.
-
-    </p>
+    <p>&#169; Copyright 2021, Authors of opnmf.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
   
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
@@ -521,18 +411,22 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
       <dd><a href="plot_faces_decomposition.html">main</a></dd>
     </dl>
   </div>
-</div>
-
-  <script type="text/javascript">
+</div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8J1P5PPK74"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  
-  
-    
-   
+      gtag('config', 'G-8J1P5PPK74', {
+          'anonymize_ip': false,
+      });
+    </script> 
 
 </body>
 </html>
