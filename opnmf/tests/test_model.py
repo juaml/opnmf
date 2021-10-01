@@ -1,4 +1,4 @@
-import numpy as np
+from numpy.testing import assert_array_almost_equal
 import scipy.io as sio
 import pytest
 from pathlib import Path
@@ -21,5 +21,5 @@ def test_model(cwd):
 
     W, H, _ = opnmf.opnmf(data, n_components=6)
 
-    np.testing.assert_array_almost_equal(m_W, W, decimal=4)
-    np.testing.assert_array_almost_equal(m_H, H, decimal=4)
+    assert_array_almost_equal(m_W, W, decimal=4)
+    assert_array_almost_equal(m_H, H, decimal=4)

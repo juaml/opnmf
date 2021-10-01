@@ -18,6 +18,8 @@ Enhancements
 
 - Add Rank Selection using permutation by `Fede Raimondo`_ and `Kaustubh Patil`_.
 
+- Support `"auto"` or `range` as `n_components` in OPNMF model by `Fede Raimondo`_. 
+
 Bugs
 ~~~~
 
