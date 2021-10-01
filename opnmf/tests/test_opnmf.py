@@ -2,7 +2,7 @@ from numpy.testing import assert_array_almost_equal
 import scipy.io as sio
 import pytest
 from pathlib import Path
-from opnmf.decomposition import opnmf
+from opnmf import opnmf
 
 
 @pytest.fixture(scope="module")

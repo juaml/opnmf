@@ -1,4 +1,5 @@
 from . _version import __version__
-from . decomposition import OPNMF, opnmf
+from . import opnmf
+from . import model
 from . import selection
 from . import logging

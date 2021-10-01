@@ -3,7 +3,7 @@ import numpy as np
 
 from sklearn.decomposition._nmf import _initialize_nmf
 
-from .. logging import logger, warn
+from . logging import logger, warn
 
 
 def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',

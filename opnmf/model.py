@@ -1,9 +1,10 @@
+import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.utils.validation import check_is_fitted
 
 from . opnmf import opnmf
-from .. selection import rank_permute
-from .. logging import logger
+from . selection import rank_permute
+from . logging import logger
 
 
 class OPNMF(TransformerMixin, BaseEstimator):
@@ -84,7 +85,7 @@ class OPNMF(TransformerMixin, BaseEstimator):
             if self.n_components == 'auto':
                 logger.info('Determining number of components automatically')
                 min_components = 1
-                max_components = X.shape[1]
+                max_components = X.shape[0]
                 step = 1
             else:
                 min_components = range.start
@@ -96,14 +97,14 @@ class OPNMF(TransformerMixin, BaseEstimator):
                 init_W=init_W)
             good_ranks, ranks, errors, random_errors, estimators = out
             chosen = estimators[good_ranks[0] - 1]
-            W = chosen.W
-            H = chosen.H
+            W = chosen.coef_
+            H = chosen.components_
             mse = chosen.mse_
             self.ranks_ = ranks
             self.errors_ = errors
             self.random_errors_ = random_errors
             self.good_ranks_ = good_ranks
-        elif not isinstance(self.n_components, int):
+        elif not np.issubdtype(type(self.n_components), int):
             raise ValueError('Do not know how to factorize to '
                              f'{self.n_components} components')
         else:
