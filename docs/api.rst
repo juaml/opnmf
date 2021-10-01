@@ -6,11 +6,11 @@ Reference
 Main API functions
 ^^^^^^^^^^^^^^^^^^
 
-.. automodule:: opnmf.decomposition.model
+.. automodule:: opnmf.model
    :members:
 
 
-.. automodule:: opnmf.decomposition.opnmf
+.. automodule:: opnmf.opnmf
    :members:
 
 .. automodule:: opnmf.selection

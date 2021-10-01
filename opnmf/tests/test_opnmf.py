@@ -1,8 +1,8 @@
-import numpy as np
+from numpy.testing import assert_array_almost_equal
 import scipy.io as sio
 import pytest
 from pathlib import Path
-from opnmf.decomposition import opnmf
+from opnmf import opnmf
 
 
 @pytest.fixture(scope="module")
@@ -25,8 +25,8 @@ def test_against_matlab(cwd):
     m_W = mc['W']
     m_H = mc['H']
 
-    np.testing.assert_array_almost_equal(H, m_H, decimal=4)
-    np.testing.assert_array_almost_equal(W, m_W, decimal=4)
+    assert_array_almost_equal(H, m_H, decimal=4)
+    assert_array_almost_equal(W, m_W, decimal=4)
 
 
 def test_against_R(cwd):
@@ -44,5 +44,5 @@ def test_against_R(cwd):
     r_W = mc_R['W']
     r_H = mc_R['H']
 
-    np.testing.assert_array_almost_equal(H, r_H, decimal=4)
-    np.testing.assert_array_almost_equal(W, r_W, decimal=4)
+    assert_array_almost_equal(H, r_H, decimal=4)
+    assert_array_almost_equal(W, r_W, decimal=4)

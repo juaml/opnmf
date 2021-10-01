@@ -1,6 +1,6 @@
 import numpy as np
-from opnmf.decomposition import OPNMF
-from opnmf.logging import logger
+from . import model
+from . logging import logger
 
 
 def _shuffle_along_axis(a, axis):
@@ -65,7 +65,8 @@ def rank_permute(X, min_components, max_components, step=1, max_iter=50000,
     logger.info(f'Choosing ranks between: {ranks}')
 
     estimators = [
-        OPNMF(n_components=t_rank, max_iter=max_iter, tol=tolerance, init=init)
+        model.OPNMF(n_components=t_rank, max_iter=max_iter, tol=tolerance,
+                    init=init)
         for t_rank in ranks
     ]
 
