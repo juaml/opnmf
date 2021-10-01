@@ -16,7 +16,7 @@ import seaborn as sns
 from sklearn.datasets import fetch_olivetti_faces
 from sklearn import decomposition
 
-from opnmf import OPNMF, logging
+from opnmf import model, logging
 
 ##############################################################################
 # set up logging
@@ -121,7 +121,7 @@ g.ax_heatmap.set_ylabel('Subjects')
 #
 # Let's do the same figures as with NMF
 
-estimator = OPNMF(n_components=n_components, init=init, tol=tolerance)
+estimator = model.OPNMF(n_components=n_components, init=init, tol=tolerance)
 W = estimator.fit_transform(faces)
 H = estimator.components_
 plot_gallery('OPNMF components (H)', H[:n_components])
@@ -140,7 +140,7 @@ g.ax_heatmap.set_ylabel('Subjects')
 # Interestingly, we can use this methodology to do so on the other dimension
 # (pixels in the image)
 
-estimator = OPNMF(n_components=n_components, init=init, tol=tolerance)
+estimator = model.OPNMF(n_components=n_components, init=init, tol=tolerance)
 W = estimator.fit_transform(faces.T)  # Transpose the faces
 H = estimator.components_
 
