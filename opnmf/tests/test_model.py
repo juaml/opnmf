@@ -21,8 +21,8 @@ def test_model(cwd):
 
     W, H, _ = opnmf.opnmf(data, n_components=6)
 
-    assert_array_almost_equal(m_W, W, decimal=4)
-    assert_array_almost_equal(m_H, H, decimal=4)
+    assert_array_almost_equal(m_W, W, decimal=3)
+    assert_array_almost_equal(m_H, H, decimal=3)
 
 
 def test_model_rank_selection(cwd):
