@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rank Selection &mdash; opnmf  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Faces Decomposition" href="plot_faces_decomposition.html" />
+    <link rel="prev" title="Examples" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/opnmf.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Rank Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_faces_decomposition.html">Faces Decomposition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintaining.html">Maintaining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">opnmf</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Examples</a> &raquo;</li>
+      <li>Rank Selection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/auto_examples/plot_rank_selection.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-rank-selection-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="rank-selection">
+<span id="sphx-glr-auto-examples-plot-rank-selection-py"></span><h1>Rank Selection<a class="headerlink" href="#rank-selection" title="Permalink to this headline"></a></h1>
+<p>Authors: Federico Raimondo, Kaustubh Patil</p>
+<p>License: BSD 3 clause</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">opnmf.selection</span> <span class="kn">import</span> <span class="n">rank_permute</span>
+<span class="kn">from</span> <span class="nn">opnmf.logging</span> <span class="kn">import</span> <span class="n">configure_logging</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+<p>set up logging</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configure_logging</span><span class="p">(</span><span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:43:58,319 - opnmf - INFO - ===== Lib Versions =====
+2021-11-09 12:43:58,320 - opnmf - INFO - numpy: 1.19.5
+2021-11-09 12:43:58,320 - opnmf - INFO - scipy: 1.7.2
+2021-11-09 12:43:58,320 - opnmf - INFO - sklearn: 0.24.2
+2021-11-09 12:43:58,320 - opnmf - INFO - opnmf: 0.0.2
+2021-11-09 12:43:58,320 - opnmf - INFO - ========================
+</pre></div>
+</div>
+<p>Load IRIS dataset</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">features</span></a> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal_width&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">features</span></a><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>Find rank. In this example we are bounded by the number
+of features (4)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">min_components</span></a> <span class="o">=</span> <span class="mi">1</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">max_components</span></a> <span class="o">=</span> <span class="mi">4</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">result</span></a> <span class="o">=</span> <span class="n">rank_permute</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">min_components</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">max_components</span></a><span class="p">)</span>
+
+<span class="n">good_ranks</span><span class="p">,</span> <span class="n">tested_ranks</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">random_errors</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">estimators</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">result</span></a>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:43:58,621 - opnmf - INFO - Choosing ranks between: [1 2 3 4]
+2021-11-09 12:43:58,621 - opnmf - INFO - Fitting estimators with random permutations
+2021-11-09 12:43:58,622 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,623 - opnmf - INFO - iter=0 diff=0.8927963651857725, obj=44.363702933673245
+2021-11-09 12:43:58,623 - opnmf - INFO - Converged in 1 iterations
+2021-11-09 12:43:58,624 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,624 - opnmf - INFO - iter=0 diff=0.896281151850484, obj=42.971387351469374
+2021-11-09 12:43:58,630 - opnmf - INFO - iter=100 diff=0.0029398337326028696, obj=35.58698152468964
+2021-11-09 12:43:58,639 - opnmf - INFO - iter=200 diff=0.0003171431400759283, obj=35.34949974559752
+2021-11-09 12:43:58,651 - opnmf - INFO - iter=300 diff=7.754099142109854e-05, obj=35.3324779903705
+2021-11-09 12:43:58,663 - opnmf - INFO - iter=400 diff=2.6689515567926128e-05, obj=35.32899436386406
+2021-11-09 12:43:58,674 - opnmf - INFO - iter=500 diff=1.0405334018094638e-05, obj=35.327894246573294
+2021-11-09 12:43:58,675 - opnmf - INFO - Converged in 505 iterations
+2021-11-09 12:43:58,675 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,681 - opnmf - INFO - iter=0 diff=0.8976623999686378, obj=41.422010470080295
+2021-11-09 12:43:58,692 - opnmf - INFO - iter=100 diff=0.00020818656953698473, obj=26.049208627681804
+2021-11-09 12:43:58,705 - opnmf - INFO - iter=200 diff=0.0002942189486071896, obj=26.07355340627813
+2021-11-09 12:43:58,717 - opnmf - INFO - iter=300 diff=0.0008200712631473474, obj=26.159067929016707
+2021-11-09 12:43:58,729 - opnmf - INFO - iter=400 diff=0.003440842157905699, obj=25.64931103119671
+2021-11-09 12:43:58,739 - opnmf - INFO - iter=500 diff=0.0003553420328116165, obj=24.829016614150092
+2021-11-09 12:43:58,745 - opnmf - INFO - iter=600 diff=7.545713389746581e-05, obj=24.78217795511598
+2021-11-09 12:43:58,751 - opnmf - INFO - iter=700 diff=3.272849734215369e-05, obj=24.77257011545198
+2021-11-09 12:43:58,757 - opnmf - INFO - iter=800 diff=3.125373328278115e-05, obj=24.768648068527778
+2021-11-09 12:43:58,763 - opnmf - INFO - iter=900 diff=3.4051969781166636e-05, obj=24.766887780475304
+2021-11-09 12:43:58,769 - opnmf - INFO - iter=1000 diff=3.12703354574981e-05, obj=24.766592481555435
+2021-11-09 12:43:58,775 - opnmf - INFO - iter=1100 diff=2.4374523870220313e-05, obj=24.767123845457586
+2021-11-09 12:43:58,781 - opnmf - INFO - iter=1200 diff=1.7108387598397127e-05, obj=24.76784667080174
+2021-11-09 12:43:58,787 - opnmf - INFO - iter=1300 diff=1.1436047636091781e-05, obj=24.76843498824242
+2021-11-09 12:43:58,789 - opnmf - INFO - Converged in 1333 iterations
+2021-11-09 12:43:58,789 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,790 - opnmf - INFO - iter=0 diff=0.8988431866437399, obj=39.620744072126556
+2021-11-09 12:43:58,797 - opnmf - INFO - iter=100 diff=0.0002442011795665008, obj=1.8404900175132692
+2021-11-09 12:43:58,803 - opnmf - INFO - iter=200 diff=5.289042500263592e-05, obj=0.8567803188985617
+2021-11-09 12:43:58,809 - opnmf - INFO - iter=300 diff=2.2223185551858824e-05, obj=0.554913988960818
+2021-11-09 12:43:58,815 - opnmf - INFO - iter=400 diff=1.2122146928567085e-05, obj=0.40950251068929355
+2021-11-09 12:43:58,818 - opnmf - INFO - Converged in 439 iterations
+2021-11-09 12:43:58,818 - opnmf - INFO - Fitting estimators with original data
+2021-11-09 12:43:58,818 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,819 - opnmf - INFO - iter=0 diff=0.8979166119932411, obj=18.19299122423655
+2021-11-09 12:43:58,819 - opnmf - INFO - Converged in 1 iterations
+2021-11-09 12:43:58,819 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,820 - opnmf - INFO - iter=0 diff=0.9005345540236736, obj=17.592898608366433
+2021-11-09 12:43:58,825 - opnmf - INFO - iter=100 diff=0.00478233404661628, obj=12.374361231854795
+2021-11-09 12:43:58,831 - opnmf - INFO - iter=200 diff=0.0017090250985304766, obj=9.236112536836712
+2021-11-09 12:43:58,837 - opnmf - INFO - iter=300 diff=0.00046703490549873124, obj=8.27411422719614
+2021-11-09 12:43:58,842 - opnmf - INFO - iter=400 diff=0.00015084168501771364, obj=8.021475182985363
+2021-11-09 12:43:58,848 - opnmf - INFO - iter=500 diff=5.3279572748430676e-05, obj=7.9417509947257425
+2021-11-09 12:43:58,854 - opnmf - INFO - iter=600 diff=1.9508155278100318e-05, obj=7.9138893105962325
+2021-11-09 12:43:58,858 - opnmf - INFO - Converged in 668 iterations
+2021-11-09 12:43:58,858 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,859 - opnmf - INFO - iter=0 diff=0.9008854436852691, obj=17.589994890219803
+2021-11-09 12:43:58,865 - opnmf - INFO - iter=100 diff=0.0064903519204170465, obj=12.28189236097726
+2021-11-09 12:43:58,871 - opnmf - INFO - iter=200 diff=0.002908357343582906, obj=7.4284284947145345
+2021-11-09 12:43:58,877 - opnmf - INFO - iter=300 diff=0.0008369396656013369, obj=4.692345362790706
+2021-11-09 12:43:58,883 - opnmf - INFO - iter=400 diff=0.0003334059584117292, obj=3.746048776589676
+2021-11-09 12:43:58,889 - opnmf - INFO - iter=500 diff=0.00016958404516659347, obj=3.386655667852878
+2021-11-09 12:43:58,895 - opnmf - INFO - iter=600 diff=0.00010053594640468685, obj=3.224643627824672
+2021-11-09 12:43:58,901 - opnmf - INFO - iter=700 diff=6.587474562984935e-05, obj=3.140665500006889
+2021-11-09 12:43:58,907 - opnmf - INFO - iter=800 diff=4.62605747189034e-05, obj=3.0923386173788283
+2021-11-09 12:43:58,913 - opnmf - INFO - iter=900 diff=3.416646735864023e-05, obj=3.06225625646368
+2021-11-09 12:43:58,919 - opnmf - INFO - iter=1000 diff=2.6215926734490887e-05, obj=3.0423680638944566
+2021-11-09 12:43:58,925 - opnmf - INFO - iter=1100 diff=2.0724385737880826e-05, obj=3.0285824848281915
+2021-11-09 12:43:58,931 - opnmf - INFO - iter=1200 diff=1.6779513269241325e-05, obj=3.0186571197072416
+2021-11-09 12:43:58,937 - opnmf - INFO - iter=1300 diff=1.3853983874180934e-05, obj=3.011285535705445
+2021-11-09 12:43:58,943 - opnmf - INFO - iter=1400 diff=1.162648450490813e-05, obj=3.0056673153828544
+2021-11-09 12:43:58,949 - opnmf - INFO - Converged in 1494 iterations
+2021-11-09 12:43:58,949 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:43:58,950 - opnmf - INFO - iter=0 diff=0.9009726594607053, obj=17.57956702209738
+2021-11-09 12:43:58,956 - opnmf - INFO - iter=100 diff=0.004736622724118771, obj=11.56302516543663
+2021-11-09 12:43:58,962 - opnmf - INFO - iter=200 diff=0.0026013503303404665, obj=7.444752313840761
+2021-11-09 12:43:58,968 - opnmf - INFO - iter=300 diff=0.0008629189126871971, obj=4.139826452234608
+2021-11-09 12:43:58,974 - opnmf - INFO - iter=400 diff=0.00034684015663284087, obj=2.5709506761378065
+2021-11-09 12:43:58,981 - opnmf - INFO - iter=500 diff=0.00017414127196778285, obj=1.8021428845057597
+2021-11-09 12:43:58,987 - opnmf - INFO - iter=600 diff=0.00010195858124491413, obj=1.3696389513039644
+2021-11-09 12:43:58,993 - opnmf - INFO - iter=700 diff=6.617752710359966e-05, obj=1.0980898895403604
+2021-11-09 12:43:58,999 - opnmf - INFO - iter=800 diff=4.615562611244949e-05, obj=0.9135682660008758
+2021-11-09 12:43:59,005 - opnmf - INFO - iter=900 diff=3.392284162986168e-05, obj=0.7807271391302761
+2021-11-09 12:43:59,011 - opnmf - INFO - iter=1000 diff=2.594008726195127e-05, obj=0.6808413393286741
+2021-11-09 12:43:59,018 - opnmf - INFO - iter=1100 diff=2.045866049870759e-05, obj=0.6031603926541299
+2021-11-09 12:43:59,024 - opnmf - INFO - iter=1200 diff=1.6539575385095064e-05, obj=0.5411070811307576
+2021-11-09 12:43:59,030 - opnmf - INFO - iter=1300 diff=1.3644125708542285e-05, obj=0.49044638273711505
+2021-11-09 12:43:59,036 - opnmf - INFO - iter=1400 diff=1.1446172057168089e-05, obj=0.4483349544164567
+2021-11-09 12:43:59,041 - opnmf - INFO - Converged in 1484 iterations
+</pre></div>
+</div>
+<p>Plot the results</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Rank selection on IRIS dataset&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tested_ranks</span><span class="p">,</span> <span class="n">random_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;permuted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tested_ranks</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">good_errors</span> <span class="o">=</span> <span class="n">errors</span><span class="p">[</span><span class="n">good_ranks</span> <span class="o">-</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">min_components</span></a><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">good_ranks</span><span class="p">,</span> <span class="n">good_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;selected&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+         <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">tested_ranks</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;# Components&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_rank_selection_001.png" srcset="../_images/sphx_glr_plot_rank_selection_001.png" alt="Rank selection on IRIS dataset" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.036 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-rank-selection-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/af8f80eea902b633548d781647916784/plot_rank_selection.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rank_selection.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/bfa77074fe5b11654c21bbc4e94511da/plot_rank_selection.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rank_selection.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_faces_decomposition.html" class="btn btn-neutral float-right" title="Faces Decomposition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Authors of opnmf.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v0.0.2
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="../../v0.0.1/index.html">v0.0.1</a></dd>
+      <dd><a href="plot_rank_selection.html">v0.0.2</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8J1P5PPK74"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8J1P5PPK74', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
