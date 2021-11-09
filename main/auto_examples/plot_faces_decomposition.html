@@ -133,12 +133,12 @@ to download the full example code</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:40:34,721 - opnmf - INFO - ===== Lib Versions =====
-2021-11-09 12:40:34,721 - opnmf - INFO - numpy: 1.19.5
-2021-11-09 12:40:34,721 - opnmf - INFO - scipy: 1.7.2
-2021-11-09 12:40:34,721 - opnmf - INFO - sklearn: 0.24.2
-2021-11-09 12:40:34,721 - opnmf - INFO - opnmf: 0.0.2.dev11+g4645d53.d20211109
-2021-11-09 12:40:34,721 - opnmf - INFO - ========================
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:44:35,733 - opnmf - INFO - ===== Lib Versions =====
+2021-11-09 12:44:35,733 - opnmf - INFO - numpy: 1.19.5
+2021-11-09 12:44:35,733 - opnmf - INFO - scipy: 1.7.2
+2021-11-09 12:44:35,733 - opnmf - INFO - sklearn: 0.24.2
+2021-11-09 12:44:35,733 - opnmf - INFO - opnmf: 0.0.3.dev1+g88d7273.d20211109
+2021-11-09 12:44:35,733 - opnmf - INFO - ========================
 </pre></div>
 </div>
 <p>We will plot 6 faces and factorize to 6 components</p>
@@ -261,9 +261,9 @@ another constraint to <span class="math notranslate nohighlight">\(W\)</span>: o
 <li><img src="../_images/sphx_glr_plot_faces_decomposition_005.png" srcset="../_images/sphx_glr_plot_faces_decomposition_005.png" alt="OPNMF weights (W)" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:40:37,688 - opnmf - INFO - Initializing using nndsvd
-2021-11-09 12:40:37,764 - opnmf - INFO - iter=0 diff=0.9636635184288025, obj=155.62832641601562
-2021-11-09 12:40:37,823 - opnmf - INFO - Converged in 80 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:44:39,223 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:44:39,301 - opnmf - INFO - iter=0 diff=0.9636635184288025, obj=155.62796020507812
+2021-11-09 12:44:39,363 - opnmf - INFO - Converged in 80 iterations
 
 Text(990.5555555555555, 0.5, &#39;Subjects&#39;)
 </pre></div>
@@ -283,10 +283,10 @@ defines components in a way that each subject matches only one.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:40:38,648 - opnmf - INFO - Initializing using nndsvd
-2021-11-09 12:40:39,002 - opnmf - INFO - iter=0 diff=0.9637103080749512, obj=155.67027282714844
-2021-11-09 12:40:42,255 - opnmf - INFO - iter=100 diff=0.005347417667508125, obj=146.46954345703125
-2021-11-09 12:40:42,704 - opnmf - INFO - Converged in 114 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-11-09 12:44:40,246 - opnmf - INFO - Initializing using nndsvd
+2021-11-09 12:44:40,559 - opnmf - INFO - iter=0 diff=0.9637102484703064, obj=155.66993713378906
+2021-11-09 12:44:43,915 - opnmf - INFO - iter=100 diff=0.005347760859876871, obj=146.4691162109375
+2021-11-09 12:44:44,375 - opnmf - INFO - Converged in 114 iterations
 (4096, 6)
 (6, 400)
 </pre></div>
@@ -358,7 +358,7 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.221 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  12.181 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-faces-decomposition-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5a666f9fed969812e52f9d7a1f65966c/plot_faces_decomposition.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_faces_decomposition.py</span></code></a></p>
@@ -405,6 +405,7 @@ pp. 734-749, May 2010, doi: 10.1109/TNN.2010.2041361.</p>
     <dl>
       <dt>Tags</dt>
       <dd><a href="../../v0.0.1/index.html">v0.0.1</a></dd>
+      <dd><a href="../../v0.0.2/index.html">v0.0.2</a></dd>
     </dl>
     <dl>
       <dt>Branches</dt>

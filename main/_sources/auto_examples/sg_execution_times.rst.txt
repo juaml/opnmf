@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:12.340** total execution time for **auto_examples** files:
+**00:14.063** total execution time for **auto_examples** files:
 
 +---------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_faces_decomposition.py` (``plot_faces_decomposition.py``) | 00:11.221 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_faces_decomposition.py` (``plot_faces_decomposition.py``) | 00:12.181 | 0.0 MB |
 +---------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_rank_selection.py` (``plot_rank_selection.py``)           | 00:01.119 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_rank_selection.py` (``plot_rank_selection.py``)           | 00:01.882 | 0.0 MB |
 +---------------------------------------------------------------------------------------------+-----------+--------+
