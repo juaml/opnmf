@@ -132,4 +132,6 @@ cython_debug/
 # OS Stuff
 .DS_store
 
+opnmf/_version.py
+
 scratch/

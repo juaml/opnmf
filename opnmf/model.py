@@ -1,14 +1,19 @@
 import numpy as np
-from sklearn.base import BaseEstimator, TransformerMixin
+import pandas as pd
+from sklearn.base import (
+    BaseEstimator,
+    ClassNamePrefixFeaturesOutMixin,
+    TransformerMixin,
+)
 from sklearn.utils.validation import check_is_fitted
 
-from . opnmf import opnmf
-from . selection import rank_permute
-from . logging import logger
+from .logging import logger
+from .opnmf import opnmf
+from .selection import rank_permute
 
 
-class OPNMF(TransformerMixin, BaseEstimator):
-    """ orthogonal projective non-negative matrix factorization
+class OPNMF(TransformerMixin, BaseEstimator, ClassNamePrefixFeaturesOutMixin):
+    """orthogonal projective non-negative matrix factorization
 
     Parameters
     ----------
@@ -21,7 +26,7 @@ class OPNMF(TransformerMixin, BaseEstimator):
         Maximum number of iterations before timing out. Defaults to 200.
     tol: float, default=1e-4
         Tolerance of the stopping condition.
-    init : {'random', 'nndsvd', 'nndsvda', 'nndsvdar', 'custom'}, default=None
+    init : {'random', 'nndsvd', 'nndsvda', 'nndsvdar', 'custom'}
         Method used to initialize the procedure.
         Valid options:
 
@@ -37,17 +42,18 @@ class OPNMF(TransformerMixin, BaseEstimator):
           for when sparsity is not desired)
         * 'custom': use custom matrix W.
 
+        Default is None
+
     """
 
-    def __init__(self, n_components=10, max_iter=50000, tol=1e-5,
-                 init='nndsvd'):
+    def __init__(self, n_components=10, max_iter=50000, tol=1e-5, init="nndsvd"):
         self.n_components = n_components
         self.max_iter = max_iter
         self.tol = tol
         self.init = init
 
-    def fit(self, X, init_W=None):
-        """ Learn a OPNMF model for the data X.
+    def fit(self, X, y=None, init_W=None):
+        """Learn a OPNMF model for the data X.
 
         Parameters
         ----------
@@ -63,8 +69,8 @@ class OPNMF(TransformerMixin, BaseEstimator):
         self.fit_transform(X, init_W=init_W)
         return self
 
-    def fit_transform(self, X, init_W=None):
-        """ Learn a OPNMF model for the data X and returns the transformed
+    def fit_transform(self, X, y=None, init_W=None):
+        """Learn a OPNMF model for the data X and returns the transformed
         data.
 
         Parameters
@@ -80,10 +86,10 @@ class OPNMF(TransformerMixin, BaseEstimator):
             Transformed data
         """
 
-        if self.n_components == 'auto' or isinstance(self.n_components, range):
-            logger.info('Doing rank selection')
-            if self.n_components == 'auto':
-                logger.info('Determining number of components automatically')
+        if self.n_components == "auto" or isinstance(self.n_components, range):
+            logger.info("Doing rank selection")
+            if self.n_components == "auto":
+                logger.info("Determining number of components automatically")
                 min_components = 1
                 max_components = X.shape[0]
                 step = 1
@@ -92,9 +98,15 @@ class OPNMF(TransformerMixin, BaseEstimator):
                 max_components = range.stop
                 step = range.step
             out = rank_permute(
-                X, min_components, max_components, step=step,
-                max_iter=self.max_iter, tolerance=self.tol, init=self.init,
-                init_W=init_W)
+                X,
+                min_components,
+                max_components,
+                step=step,
+                max_iter=self.max_iter,
+                tolerance=self.tol,
+                init=self.init,
+                init_W=init_W,
+            )
             good_ranks, ranks, errors, random_errors, estimators = out
             chosen = estimators[good_ranks[0] - 1]
             W = chosen.coef_
@@ -105,13 +117,19 @@ class OPNMF(TransformerMixin, BaseEstimator):
             self.random_errors_ = random_errors
             self.good_ranks_ = good_ranks
         elif not np.issubdtype(type(self.n_components), int):
-            raise ValueError('Do not know how to factorize to '
-                             f'{self.n_components} components')
+            raise ValueError(
+                "Do not know how to factorize to " f"{self.n_components} components"
+            )
         else:
             # Run factorization
             W, H, mse = opnmf(
-                X, n_components=self.n_components, max_iter=self.max_iter,
-                tol=self.tol, init=self.init, init_W=init_W)
+                X.values if isinstance(X, pd.DataFrame) else X,
+                n_components=self.n_components,
+                max_iter=self.max_iter,
+                tol=self.tol,
+                init=self.init,
+                init_W=init_W,
+            )
 
         # Set model variables
         self.coef_ = W
@@ -139,3 +157,8 @@ class OPNMF(TransformerMixin, BaseEstimator):
     def mse(self):
         check_is_fitted(self)
         return self.mse_
+
+    @property
+    def _n_features_out(self):
+        """Number of transformed output features."""
+        return self.n_components_

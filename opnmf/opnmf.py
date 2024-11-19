@@ -1,13 +1,13 @@
 import warnings
+
 import numpy as np
 
 from sklearn.decomposition._nmf import _initialize_nmf
 
-from . logging import logger, warn
+from .logging import logger, warn
 
 
-def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
-          init_W=None):
+def opnmf(X, n_components, max_iter=50000, tol=1e-5, init="nndsvd", init_W=None):
     """
     Orthogonal projective non-negative matrix factorization.
 
@@ -49,11 +49,13 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
     mse : float
         Reconstruction error
     """
-    if init != 'custom':
+    if init != "custom":
         if init_W is not None:
-            warn('Initialisation was not set to "custom" but an initial W '
-                 'matrix was specified. This matrix will be ignored.')
-        logger.info(f'Initializing using {init}')
+            warn(
+                'Initialisation was not set to "custom" but an initial W '
+                "matrix was specified. This matrix will be ignored."
+            )
+        logger.info(f"Initializing using {init}")
         W, _ = _initialize_nmf(X, n_components, init=init)
         init_W = None
     else:
@@ -73,25 +75,28 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
             W[W < 1e-16] = 1e-16
             W = W / np.linalg.norm(W, ord=2)
 
-            delta_W = (np.linalg.norm(old_W - W, ord='fro') /
-                       np.linalg.norm(old_W, ord='fro'))
+            delta_W = np.linalg.norm(old_W - W, ord="fro") / np.linalg.norm(
+                old_W, ord="fro"
+            )
             if (iter % 100) == 0:
-                obj = np.linalg.norm(X - (W @ (W.T @ X)), ord='fro')
-                logger.info(f'iter={iter} diff={delta_W}, obj={obj}')
+                obj = np.linalg.norm(X - (W @ (W.T @ X)), ord="fro")
+                logger.info(f"iter={iter} diff={delta_W}, obj={obj}")
             if delta_W < tol:
-                logger.info(f'Converged in {iter} iterations')
+                logger.info(f"Converged in {iter} iterations")
                 break
 
     if delta_W > tol:
-        warn('OPNMF did not converge with '
-             f'tolerance = {tol} under {max_iter} iterations')
+        warn(
+            "OPNMF did not converge with "
+            f"tolerance = {tol} under {max_iter} iterations"
+        )
 
     H = W.T @ X
 
     hlen = np.linalg.norm(H, ord=2, axis=1)
     n_zero = np.sum(hlen == 0)
     if n_zero > 0:
-        warnings.warn(f'low rank: {n_zero} factors have norm 0')
+        warnings.warn(f"low rank: {n_zero} factors have norm 0")
         hlen[hlen == 0] = 1
 
     Wh = W * hlen
@@ -100,6 +105,6 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
     W = W[:, idx]
     H = W.T @ X
 
-    mse = np.linalg.norm(X - (W @ H), ord='fro')
+    mse = np.linalg.norm(X - (W @ H), ord="fro")
 
     return W, H, mse
