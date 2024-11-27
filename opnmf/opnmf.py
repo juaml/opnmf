@@ -6,8 +6,7 @@ from sklearn.decomposition._nmf import _initialize_nmf
 from . logging import logger, warn
 
 
-def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
-          init_W=None):
+def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd', init_W=None, W_fixed=None):
     """
     Orthogonal projective non-negative matrix factorization.
 
@@ -40,6 +39,9 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
     init_W: array (n_samples, n_components)
         Fixed initial coefficient matrix.
 
+    W_fixed: ndarray of shape (n_samples, n_components), default=None
+        Fixed basis matrix. If provided, the function will only solve for H.
+        
     Returns
     -------
     W : ndarray of shape (n_samples, n_components)
@@ -49,42 +51,47 @@ def opnmf(X, n_components, max_iter=50000, tol=1e-5, init='nndsvd',
     mse : float
         Reconstruction error
     """
-    if init != 'custom':
-        if init_W is not None:
-            warn('Initialisation was not set to "custom" but an initial W '
-                 'matrix was specified. This matrix will be ignored.')
-        logger.info(f'Initializing using {init}')
-        W, _ = _initialize_nmf(X, n_components, init=init)
-        init_W = None
+    if W_fixed is not None:
+        # Use the fixed W and skip the update loop
+        W = W_fixed
     else:
-        W = init_W
-    delta_W = np.inf
-    XX = X @ X.T
+        # Initialization as per the original code
+        if init != 'custom':
+            if init_W is not None:
+                warn('Initialisation was not set to "custom" but an initial W '
+                     'matrix was specified. This matrix will be ignored.')
+            logger.info(f'Initializing using {init}')
+            W, _ = _initialize_nmf(X, n_components, init=init)
+            init_W = None
+        else:
+            W = init_W
+        # Main iterative loop for updating W
+        delta_W = np.inf
+        XX = X @ X.T
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            for iter in range(max_iter):
+                old_W = W
 
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        for iter in range(max_iter):
-            old_W = W
+                enum = XX @ W
+                denom = W @ (W.T @ XX @ W)
+                W = W * enum / denom
 
-            enum = XX @ W
-            denom = W @ (W.T @ XX @ W)
-            W = W * enum / denom
+                W[W < 1e-16] = 1e-16
+                W = W / np.linalg.norm(W, ord=2)
 
-            W[W < 1e-16] = 1e-16
-            W = W / np.linalg.norm(W, ord=2)
+                delta_W = (np.linalg.norm(old_W - W, ord='fro') /
+                           np.linalg.norm(old_W, ord='fro'))
+                if (iter % 100) == 0:
+                    obj = np.linalg.norm(X - (W @ (W.T @ X)), ord='fro')
+                    logger.info(f'iter={iter} diff={delta_W}, obj={obj}')
+                if delta_W < tol:
+                    logger.info(f'Converged in {iter} iterations')
+                    break
 
-            delta_W = (np.linalg.norm(old_W - W, ord='fro') /
-                       np.linalg.norm(old_W, ord='fro'))
-            if (iter % 100) == 0:
-                obj = np.linalg.norm(X - (W @ (W.T @ X)), ord='fro')
-                logger.info(f'iter={iter} diff={delta_W}, obj={obj}')
-            if delta_W < tol:
-                logger.info(f'Converged in {iter} iterations')
-                break
-
-    if delta_W > tol:
-        warn('OPNMF did not converge with '
-             f'tolerance = {tol} under {max_iter} iterations')
+        if delta_W > tol:
+            warn('OPNMF did not converge with '
+                 f'tolerance = {tol} under {max_iter} iterations')
 
     H = W.T @ X
 
